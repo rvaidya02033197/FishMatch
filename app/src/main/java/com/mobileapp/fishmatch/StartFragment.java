@@ -10,18 +10,38 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class StartFragment extends Fragment {
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_start,
-                container, false);
-        Button startButton = view.findViewById(R.id.PlayButton);
+import com.mobileapp.fishmatch.databinding.FragmentGameBinding;
+import com.mobileapp.fishmatch.databinding.FragmentStartBinding;
 
-        startButton.setOnClickListener(new View.OnClickListener() {
+public class StartFragment extends Fragment {
+    // view binding
+    private FragmentStartBinding binding;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // initialize view binding, inflate layout
+        binding = FragmentStartBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        // set the difficulty "easy" to be selected by default initially
+        binding.easyDifficulty.setChecked(true);
+
+        // set the play button callback function
+        binding.playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_startFragment_to_gameFragment2);
+                // determine difficulty
+                int difficulty = -1;
+                if (binding.easyDifficulty.isChecked()) {
+                    difficulty = 1;
+                } else if (binding.mediumDifficulty.isChecked()) {
+                    difficulty = 2;
+                } else if (binding.hardDifficulty.isChecked()) {
+                    difficulty = 3;
+                }
+                StartFragmentDirections.ActionStartFragmentToGameFragment action = StartFragmentDirections.actionStartFragmentToGameFragment().setDifficulty(difficulty);
+
+                Navigation.findNavController(v).navigate(action);
             }
         });
         return view;

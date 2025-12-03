@@ -39,6 +39,10 @@ public class FishMatch {
     3+ flips at a time similar to a mutex lock. The "lock" is released in clear()   */
     public boolean canFlip = true;
 
+    /* todo: track relevant statistics for the stats page, either as public
+        member variables or as private member variables with a public getter
+    * */
+
     /*************************************
      *   PUBLIC METHODS
      ************************************/

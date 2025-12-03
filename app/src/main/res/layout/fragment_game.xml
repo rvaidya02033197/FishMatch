@@ -57,7 +57,8 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:background="@drawable/stripes"
-        android:importantForAccessibility="no" app:layout_constraintBottom_toTopOf="@+id/tile_8"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toTopOf="@+id/tile_12"
         app:layout_constraintEnd_toStartOf="@+id/tile_5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,11 +100,12 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:background="@drawable/stripes"
-        android:importantForAccessibility="no" app:layout_constraintBottom_toTopOf="@+id/tile_12"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toTopOf="@+id/tile_16"
         app:layout_constraintEnd_toStartOf="@+id/tile_9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tile_4" />
+        app:layout_constraintTop_toBottomOf="@+id/tile_12" />
 
     <ImageButton
         android:id="@+id/tile_9"
@@ -140,11 +142,12 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:background="@drawable/stripes"
-        android:importantForAccessibility="no" app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toTopOf="@+id/tile_8"
         app:layout_constraintEnd_toStartOf="@+id/tile_13"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tile_8" />
+        app:layout_constraintTop_toBottomOf="@+id/tile_4" />
 
     <ImageButton
         android:id="@+id/tile_13"
@@ -178,11 +181,102 @@
         app:layout_constraintStart_toEndOf="@+id/tile_14"
         app:layout_constraintTop_toTopOf="@+id/tile_14" />
 
+    <ImageButton
+        android:id="@+id/tile_16"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toTopOf="@+id/tile_20"
+        app:layout_constraintEnd_toStartOf="@+id/tile_17"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tile_8" />
+
+    <ImageButton
+        android:id="@+id/tile_17"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toStartOf="@+id/tile_18"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_16"
+        app:layout_constraintTop_toTopOf="@+id/tile_16" />
+
+    <ImageButton
+        android:id="@+id/tile_18"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toStartOf="@+id/tile_19"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_17"
+        app:layout_constraintTop_toTopOf="@+id/tile_17" />
+
+    <ImageButton
+        android:id="@+id/tile_19"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_18"
+        app:layout_constraintTop_toTopOf="@+id/tile_17" />
+
+    <ImageButton
+        android:id="@+id/tile_20"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/tile_21"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tile_16"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/tile_21"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toStartOf="@+id/tile_22"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_20"
+        app:layout_constraintTop_toTopOf="@+id/tile_20" />
+
+    <ImageButton
+        android:id="@+id/tile_22"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toStartOf="@+id/tile_23"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_21"
+        app:layout_constraintTop_toTopOf="@+id/tile_21" />
+
+    <ImageButton
+        android:id="@+id/tile_23"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_22"
+        app:layout_constraintTop_toTopOf="@+id/tile_22" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="2dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

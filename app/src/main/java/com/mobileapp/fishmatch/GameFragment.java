@@ -47,9 +47,10 @@ public class GameFragment extends Fragment {
         // initialize view binding, inflate layout
         binding = FragmentGameBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        int difficulty = GameFragmentArgs.fromBundle(getArguments()).getDifficulty();
 
         // add ImageButtons to array for easier referencing, tiles[i] = tile_i
-        initButtonVector();
+        initButtonVector(difficulty);
 
         // determine fish placement and add listeners
         initFish(tiles.size());
@@ -94,7 +95,7 @@ public class GameFragment extends Fragment {
     }
 
     /** manually construct the vector **/
-    private void initButtonVector() {
+    private void initButtonVector(int difficulty) {
         // manually add all buttons to array
         // todo: use a loop if possible
         tiles.add(binding.tile0);
@@ -113,6 +114,50 @@ public class GameFragment extends Fragment {
         tiles.add(binding.tile13);
         tiles.add(binding.tile14);
         tiles.add(binding.tile15);
+        if (difficulty > 1) {
+            // medium
+            tiles.add(binding.tile16);
+            tiles.add(binding.tile17);
+            tiles.add(binding.tile18);
+            tiles.add(binding.tile19);
+            if (difficulty > 2)  {
+                // hard
+                tiles.add(binding.tile20);
+                tiles.add(binding.tile21);
+                tiles.add(binding.tile22);
+                tiles.add(binding.tile23);
+            } else {
+                // difficulty = 2, hide extra buttons
+                binding.tile20.setAlpha(0f);
+                binding.tile21.setAlpha(0f);
+                binding.tile22.setAlpha(0f);
+                binding.tile23.setAlpha(0f);
+                // disable extra buttons
+                binding.tile20.setEnabled(false);
+                binding.tile21.setEnabled(false);
+                binding.tile22.setEnabled(false);
+                binding.tile23.setEnabled(false);
+            }
+        } else {
+            // difficulty = 1, hide extra buttons
+            binding.tile16.setAlpha(0f);
+            binding.tile17.setAlpha(0f);
+            binding.tile18.setAlpha(0f);
+            binding.tile19.setAlpha(0f);
+            binding.tile20.setAlpha(0f);
+            binding.tile21.setAlpha(0f);
+            binding.tile22.setAlpha(0f);
+            binding.tile23.setAlpha(0f);
+            // disable extra buttons
+            binding.tile16.setEnabled(false);
+            binding.tile17.setEnabled(false);
+            binding.tile18.setEnabled(false);
+            binding.tile19.setEnabled(false);
+            binding.tile20.setEnabled(false);
+            binding.tile21.setEnabled(false);
+            binding.tile22.setEnabled(false);
+            binding.tile23.setEnabled(false);
+        }
         Log.d("Game Setup", "Button array initialized");
         game.setScoreToWin(tiles.size());
         Log.d("Game Setup", "Set scoreToWin to " + tiles.size());

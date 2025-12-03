@@ -1,17 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/startFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StartFragment">
 
     <Button
-        android:id="@+id/PlayButton"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:id="@+id/playButton"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
-        android:text="@string/menu_item_game_title"/>
+        android:text="@string/menu_item_game_title"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
 
-</FrameLayout>
+    <RadioGroup
+        android:id="@+id/difficultyGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/playButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/easyDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/easy_difficulty_option" />
+
+        <RadioButton
+            android:id="@+id/mediumDifficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/medium_difficulty_option" />
+
+        <RadioButton
+            android:id="@+id/hardDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hard_difficulty_option" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

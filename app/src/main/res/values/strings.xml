@@ -4,5 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_item_settings_title">Settings</string>
     <string name="menu_item_game_title">Play!</string>
+    <string name="easy_difficulty_option">Easy (16 tiles) </string>
+    <string name="medium_difficulty_option">Medium (20 tiles)</string>
+    <string name="hard_difficulty_option">Hard (24 tiles)</string>
     <string name="menu_item_stats_title">Stats</string>
 </resources>

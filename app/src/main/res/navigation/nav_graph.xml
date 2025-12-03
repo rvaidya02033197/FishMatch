@@ -11,14 +11,19 @@
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
-            android:id="@+id/action_startFragment_to_gameFragment2"
+            android:id="@+id/action_startFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.mobileapp.fishmatch.GameFragment"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game" >
+        <argument
+            android:name="difficulty"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.mobileapp.fishmatch.SettingsFragment"
