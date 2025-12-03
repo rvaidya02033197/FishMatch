@@ -102,6 +102,8 @@ public class GameFragment extends Fragment {
         tiles.add(binding.tile14);
         tiles.add(binding.tile15);
         Log.d("Game Setup", "Button array initialized");
+        game.setScoreToWin(tiles.size());
+        Log.d("Game Setup", "Set scoreToWin to " + tiles.size());
     }
 
     /** set the onclick listener after determining what fish is associated with this tile **/
@@ -109,8 +111,11 @@ public class GameFragment extends Fragment {
         tile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.setBackgroundResource(fishImage);
-                game.flip(view, fishImage);
+                // if you can flip, then flip
+                if (game.canFlip) {
+                    view.setBackgroundResource(fishImage);
+                    game.flip(view, fishImage);
+                }
             }
         });
     }
