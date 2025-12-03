@@ -6,167 +6,173 @@
     android:layout_height="match_parent"
     tools:context=".GameFragment">
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_0"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/tile"
-        app:layout_constraintVertical_chainStyle="spread"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
         app:layout_constraintBottom_toTopOf="@+id/tile_4"
         app:layout_constraintEnd_toStartOf="@+id/tile_1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_1"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toStartOf="@+id/tile_2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_0"
         app:layout_constraintTop_toTopOf="@+id/tile_0" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_2"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toStartOf="@+id/tile_3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_1"
         app:layout_constraintTop_toTopOf="@+id/tile_1" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_3"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_2"
-        app:layout_constraintTop_toTopOf="@+id/tile_2"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tile_2" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_4"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
-        app:layout_constraintBottom_toTopOf="@+id/tile_8"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no" app:layout_constraintBottom_toTopOf="@+id/tile_8"
         app:layout_constraintEnd_toStartOf="@+id/tile_5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tile_0" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_5"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toStartOf="@+id/tile_6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_4"
         app:layout_constraintTop_toTopOf="@+id/tile_4" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_6"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
-        app:layout_constraintEnd_toStartOf="@+id/tile_7"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no" app:layout_constraintEnd_toStartOf="@+id/tile_7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_5"
         app:layout_constraintTop_toTopOf="@+id/tile_5" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_7"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_6"
         app:layout_constraintTop_toTopOf="@+id/tile_6" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_8"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
-        app:layout_constraintBottom_toTopOf="@+id/tile_12"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no" app:layout_constraintBottom_toTopOf="@+id/tile_12"
         app:layout_constraintEnd_toStartOf="@+id/tile_9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tile_4" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_9"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
-        app:layout_constraintEnd_toStartOf="@+id/tile_10"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no" app:layout_constraintEnd_toStartOf="@+id/tile_10"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_8"
         app:layout_constraintTop_toTopOf="@+id/tile_8" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_10"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
-        app:layout_constraintEnd_toStartOf="@+id/tile_11"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no" app:layout_constraintEnd_toStartOf="@+id/tile_11"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_9"
         app:layout_constraintTop_toTopOf="@+id/tile_9" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_11"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_10"
         app:layout_constraintTop_toTopOf="@+id/tile_10" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_12"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no" app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/tile_13"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tile_8" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_13"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
-        app:layout_constraintEnd_toStartOf="@+id/tile_14"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no" app:layout_constraintEnd_toStartOf="@+id/tile_14"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_12"
         app:layout_constraintTop_toTopOf="@+id/tile_12" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_14"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toStartOf="@+id/tile_15"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_13"
         app:layout_constraintTop_toTopOf="@+id/tile_13" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tile_15"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/tile"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/stripes"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_14"
