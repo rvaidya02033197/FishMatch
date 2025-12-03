@@ -15,8 +15,10 @@ import java.util.Vector;
 public class GameFragment extends Fragment {
     // view binding
     private FragmentGameBinding binding;
+
     // button vector
     private Vector<ImageButton> tiles = new Vector<>();
+
     // const fish image array
     private Vector<Integer> fishImages = new Vector<>(Arrays.asList(
             R.drawable.bass,
@@ -36,6 +38,7 @@ public class GameFragment extends Fragment {
             R.drawable.trout,
             R.drawable.tuna
     ));
+
     // game manager
     private FishMatch game = new FishMatch();
 
@@ -47,6 +50,7 @@ public class GameFragment extends Fragment {
 
         // add ImageButtons to array for easier referencing, tiles[i] = tile_i
         initButtonVector();
+
         // determine fish placement and add listeners
         initFish(tiles.size());
 
@@ -57,24 +61,32 @@ public class GameFragment extends Fragment {
     private void initFish(int tileCount) {
         Log.d("Game Setup", "Working with " + tileCount + " tiles and " + fishImages.size() + " fish images");
         Log.d("Game Setup", "Need to make " + tileCount/2 + " pairs of fish");
+
         // make shallow copy of vector which allows us to pop tiles that have been assigned fish
         Vector<ImageButton> tilesCopy = new Vector<>(tiles);
+
         // make shallow copy of fish image
         Vector<Integer> fishImagesCopy = new Vector<>(fishImages);
+
         // iterate until all tiles have been assigned fish
         while (!tilesCopy.isEmpty()) {
             // determine fish to make a pair of
             int fishIndex = game.randomIndex(fishImagesCopy.size());
+
             // assign to first tile
             int t1 = game.randomIndex(tilesCopy.size());
             setTileBehavior(tilesCopy.get(t1), fishImagesCopy.get(fishIndex));
+
             // pop tile
             tilesCopy.remove(t1);
+
             // assign to second tile
             int t2 = game.randomIndex(tilesCopy.size());
             setTileBehavior(tilesCopy.get(t2), fishImagesCopy.get(fishIndex));
+
             // pop tile
             tilesCopy.remove(t2);
+
             // pop fish
             fishImagesCopy.remove(fishIndex);
         }
