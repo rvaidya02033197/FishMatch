@@ -140,4 +140,8 @@ public class FishMatch {
         // release "lock" and allow for flipping
         canFlip = true;
     }
+
+    public boolean checkWin() {
+        return userScore >= scoreToWin;
+    }
 }

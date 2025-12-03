@@ -2,6 +2,8 @@ package com.mobileapp.fishmatch;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ImageButton;
 import com.mobileapp.fishmatch.databinding.FragmentGameBinding;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Vector;
 
 public class GameFragment extends Fragment {
@@ -18,6 +21,12 @@ public class GameFragment extends Fragment {
 
     // button vector
     private Vector<ImageButton> tiles = new Vector<>();
+
+    private final List<String> matchCongrats = Arrays.asList("Nice!", "Great Match!", "Fishtacular!", "Cod Damn!");
+
+    private boolean clockRunning = false;
+
+    private long baseTime = 0;
 
     // const fish image array
     private Vector<Integer> fishImages = new Vector<>(Arrays.asList(
@@ -169,11 +178,25 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // if you can flip, then flip
+                if(!clockRunning) {
+                    baseTime = SystemClock.elapsedRealtime();
+                    binding.gameTimer.setBase(baseTime);
+                    binding.gameTimer.start();
+                    clockRunning = true;
+                }
                 if (game.canFlip) {
                     view.setBackgroundResource(fishImage);
                     game.flip(view, fishImage);
                 }
+                if (game.checkWin()) {
+                    gameEnd();
+                }
             }
         });
+    }
+
+    private void gameEnd() {
+        long gameLength = SystemClock.elapsedRealtime() - binding.gameTimer.getBase();
+        binding.gameTimer.stop();
     }
 }

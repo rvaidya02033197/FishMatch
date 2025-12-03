@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment)
                 getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
+
         //create an “AppBarConfiguration” object
         AppBarConfiguration.Builder builder = new
                 AppBarConfiguration.Builder(navController.getGraph());
