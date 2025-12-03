@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".GameFragment">
 
-
     <Button
         android:id="@+id/tile_0"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/tile"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintBottom_toTopOf="@+id/tile_4"
         app:layout_constraintEnd_toStartOf="@+id/tile_1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,4 +48,135 @@
         app:layout_constraintStart_toEndOf="@+id/tile_2"
         app:layout_constraintTop_toTopOf="@+id/tile_2"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/tile_4"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintBottom_toTopOf="@+id/tile_8"
+        app:layout_constraintEnd_toStartOf="@+id/tile_5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tile_0" />
+
+    <Button
+        android:id="@+id/tile_5"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintEnd_toStartOf="@+id/tile_6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_4"
+        app:layout_constraintTop_toTopOf="@+id/tile_4" />
+
+    <Button
+        android:id="@+id/tile_6"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintEnd_toStartOf="@+id/tile_7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_5"
+        app:layout_constraintTop_toTopOf="@+id/tile_5" />
+
+    <Button
+        android:id="@+id/tile_7"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_6"
+        app:layout_constraintTop_toTopOf="@+id/tile_6" />
+
+    <Button
+        android:id="@+id/tile_8"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintBottom_toTopOf="@+id/tile_12"
+        app:layout_constraintEnd_toStartOf="@+id/tile_9"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tile_4" />
+
+    <Button
+        android:id="@+id/tile_9"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintEnd_toStartOf="@+id/tile_10"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_8"
+        app:layout_constraintTop_toTopOf="@+id/tile_8" />
+
+    <Button
+        android:id="@+id/tile_10"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintEnd_toStartOf="@+id/tile_11"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_9"
+        app:layout_constraintTop_toTopOf="@+id/tile_9" />
+
+    <Button
+        android:id="@+id/tile_11"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_10"
+        app:layout_constraintTop_toTopOf="@+id/tile_10" />
+
+    <Button
+        android:id="@+id/tile_12"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/tile_13"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tile_8" />
+
+    <Button
+        android:id="@+id/tile_13"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintEnd_toStartOf="@+id/tile_14"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_12"
+        app:layout_constraintTop_toTopOf="@+id/tile_12" />
+
+    <Button
+        android:id="@+id/tile_14"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintEnd_toStartOf="@+id/tile_15"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_13"
+        app:layout_constraintTop_toTopOf="@+id/tile_13" />
+
+    <Button
+        android:id="@+id/tile_15"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/tile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tile_14"
+        app:layout_constraintTop_toTopOf="@+id/tile_14" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
