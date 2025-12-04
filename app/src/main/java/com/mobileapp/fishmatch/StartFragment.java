@@ -16,12 +16,12 @@ public class StartFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_start,
                 container, false);
-        Button startButton = view.findViewById(R.id.PlayButton);
+        Button startButton = view.findViewById(R.id.playButton);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_startFragment_to_gameFragment2);
+                Navigation.findNavController(v).navigate(R.id.action_startFragment_to_gameFragment);
             }
         });
         return view;

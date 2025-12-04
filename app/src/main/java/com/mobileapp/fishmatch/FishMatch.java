@@ -3,6 +3,10 @@ package com.mobileapp.fishmatch;
 import android.util.Log;
 import android.view.View;
 
+import com.mobileapp.fishmatch.databinding.FragmentGameBinding;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class FishMatch {
@@ -31,6 +35,14 @@ public class FishMatch {
     // constant millisecond delay before taking action after 2nd tile flip
     private final int msDelay = 1000;
 
+    private final List<String> matchCongrats = Arrays.asList("Nice!", "Great Match!", "Fishtacular!", "Cod Damn!", "Fintastic!");
+
+    private FragmentGameBinding gameBinding;
+
+    private GameMessageListener messageListener;
+
+    private WinListener winListener;
+
     /*************************************
      *   PUBLIC MEMBER VARIABLES
      ************************************/
@@ -46,6 +58,29 @@ public class FishMatch {
     /*************************************
      *   PUBLIC METHODS
      ************************************/
+
+    public interface GameMessageListener {
+        void onMessage(String text);
+    }
+
+    public void setMessageListener(GameMessageListener listener) {
+        this.messageListener = listener;
+    }
+
+    public interface WinListener {
+        void onWin();
+    }
+
+    public void setWinListener(WinListener listener) {
+        this.winListener = listener;
+    }
+
+    // When win condition is detected
+    private void checkWin() {
+        if (userScore >= scoreToWin) {
+            winListener.onWin();
+        }
+    }
 
     /** notify the game handler that a tile has been flipped, provide the tile and fish image **/
     public void flip(View tile, Integer fishImage) {
@@ -113,10 +148,15 @@ public class FishMatch {
 
         // check for a win
         if (userScore >= scoreToWin) {
+            checkWin();
             // todo: implement visual win for user
             Log.d("Gameplay", "You win!");
         } else {
-            // todo: update a score on screen
+            // Listener message passing to display congrats on correct matchings
+            Random rand = new Random();
+            if (messageListener != null) {
+                messageListener.onMessage(matchCongrats.get(rand.nextInt(matchCongrats.size())));
+            }
             Log.d("Gameplay", "Player now has " + userScore + " points");
         }
     }
@@ -141,7 +181,4 @@ public class FishMatch {
         canFlip = true;
     }
 
-    public boolean checkWin() {
-        return userScore >= scoreToWin;
-    }
 }

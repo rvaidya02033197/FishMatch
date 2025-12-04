@@ -22,8 +22,6 @@ public class GameFragment extends Fragment {
     // button vector
     private Vector<ImageButton> tiles = new Vector<>();
 
-    private final List<String> matchCongrats = Arrays.asList("Nice!", "Great Match!", "Fishtacular!", "Cod Damn!");
-
     private boolean clockRunning = false;
 
     private long baseTime = 0;
@@ -49,7 +47,7 @@ public class GameFragment extends Fragment {
     ));
 
     // game manager
-    private FishMatch game = new FishMatch();
+    private FishMatch game;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +55,23 @@ public class GameFragment extends Fragment {
         binding = FragmentGameBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         int difficulty = GameFragmentArgs.fromBundle(getArguments()).getDifficulty();
+
+        game = new FishMatch();
+
+        // This is a listener to keep UI out of FishMatch Logic File
+        game.setMessageListener(message -> {
+            binding.inGameMessages.setAlpha(1f);
+
+            binding.inGameMessages.setText(message);
+
+            // Congrats text fade away effect.
+            binding.inGameMessages.animate().alpha(0f).setDuration(1000);
+        });
+
+        // Win listener so game fragment knows when wins happen immediately
+        game.setWinListener(() -> {
+            gameEnd();
+        });
 
         // add ImageButtons to array for easier referencing, tiles[i] = tile_i
         initButtonVector(difficulty);
@@ -188,13 +203,11 @@ public class GameFragment extends Fragment {
                     view.setBackgroundResource(fishImage);
                     game.flip(view, fishImage);
                 }
-                if (game.checkWin()) {
-                    gameEnd();
-                }
             }
         });
     }
 
+    // Function currently just stops timer, later on will navigate to win screen
     private void gameEnd() {
         long gameLength = SystemClock.elapsedRealtime() - binding.gameTimer.getBase();
         binding.gameTimer.stop();
