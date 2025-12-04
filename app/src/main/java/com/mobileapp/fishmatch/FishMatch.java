@@ -35,7 +35,7 @@ public class FishMatch {
     // constant millisecond delay before taking action after 2nd tile flip
     private final int msDelay = 1000;
 
-    private final List<String> matchCongrats = Arrays.asList("Nice!", "Great Match!", "Fishtacular!", "Cod Damn!", "Fintastic!");
+    private final List<String> matchCongrats = Arrays.asList("Nice!", "Great Match!", "Fishtacular!", "Cod Damn!", "Fintastic!", "Wowza!", "Holy Mackerel!", "Fish!!", "Two Fish with One Hook!", "Great Catch!");
 
     private FragmentGameBinding gameBinding;
 
