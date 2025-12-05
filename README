@@ -1,8 +1,14 @@
 Remaining Tasks for Fish Match App:
 - Set up Shared Preferences
+- Set up viewModel (I think it replaces/is inherited by the class, will look into)
 - Flesh out settings to include:
       -  Customize card backs 
       -  Game Speed(Standard, Fast, Slow) hard coded changes to ms delay for match and other game(not ui) functions
 - Stats Page:
-      - Contain high scored based on board size and lowest time/moves count
-
+      - Track high scores for each difficulty (Easy, Med, Hard)
+            - Fastest completion time
+            - Shortest moves taken
+            - Times mode has been won
+            - Total points scored in this mode
+      - Total points scored all times
+      - Games won
