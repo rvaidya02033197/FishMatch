@@ -35,7 +35,20 @@ public class FishMatch {
     // constant millisecond delay before taking action after 2nd tile flip
     private final int msDelay = 1000;
 
-    private final List<String> matchCongrats = Arrays.asList("Nice!", "Great Match!", "Fishtacular!", "Cod Damn!", "Fintastic!", "Wowza!", "Holy Mackerel!", "Fish!!", "Two Fish with One Hook!", "Great Catch!");
+    private final List<String> matchCongrats = Arrays.asList(
+            "Nice!",
+            "Impressive!",
+            "Great Match!",
+            "Fishtacular!",
+            "Cod Damn!",
+            "Fintastic!",
+            "Wowza!",
+            "Holy Mackerel!",
+            "Fish!!",
+            "Two Fish with One Hook!",
+            "Great Catch!",
+            "Holy Fishpaste!"
+    );
 
     private FragmentGameBinding gameBinding;
 
@@ -153,9 +166,8 @@ public class FishMatch {
             Log.d("Gameplay", "You win!");
         } else {
             // Listener message passing to display congrats on correct matchings
-            Random rand = new Random();
             if (messageListener != null) {
-                messageListener.onMessage(matchCongrats.get(rand.nextInt(matchCongrats.size())));
+                messageListener.onMessage(matchCongrats.get(this.randomIndex(matchCongrats.size())));
             }
             Log.d("Gameplay", "Player now has " + userScore + " points");
         }
