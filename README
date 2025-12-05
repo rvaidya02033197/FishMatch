@@ -1,1 +1,8 @@
-Starting ReadMe for Fish Match
+Remaining Tasks for Fish Match App:
+- Set up Shared Preferences
+- Flesh out settings to include:
+      -  Customize card backs 
+      -  Game Speed(Standard, Fast, Slow) hard coded changes to ms delay for match and other game(not ui) functions
+- Stats Page:
+      - Contain high scored based on board size and lowest time/moves count
+
