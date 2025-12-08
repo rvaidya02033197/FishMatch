@@ -67,6 +67,9 @@ public class FishMatch {
     // -1 undefined, 1 easy, 2 medium, 3 hard
     public int difficulty = -1;
 
+    // number of flips made
+    public int flips = 0;
+
     /*************************************
      *   PUBLIC METHODS
      ************************************/
@@ -99,6 +102,9 @@ public class FishMatch {
         // determine name from image
         String name = tile.getResources().getResourceEntryName(fishImage);
         Log.d("Gameplay", "Flipped a tile with the image: " + name);
+
+        // register the flip
+        this.flips++;
 
         // has a tile been flipped already?
         if (fish1.isEmpty()) {  // is string empty?

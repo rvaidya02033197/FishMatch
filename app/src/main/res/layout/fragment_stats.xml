@@ -57,7 +57,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/easyStatsHeader"
-                app:layout_constraintTop_toBottomOf="@+id/easyPointsScoredText" />
+                app:layout_constraintTop_toBottomOf="@+id/easyLeastFlipsText" />
 
             <TextView
                 android:id="@+id/hardStatsHeader"
@@ -68,7 +68,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/mediumStatsHeader"
-                app:layout_constraintTop_toBottomOf="@+id/mediumPointsScoredText" />
+                app:layout_constraintTop_toBottomOf="@+id/mediumLeastFlipsText" />
 
             <TextView
                 android:id="@+id/totalStatsHeader"
@@ -79,7 +79,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/mediumStatsHeader"
-                app:layout_constraintTop_toBottomOf="@+id/hardPointsScoredText" />
+                app:layout_constraintTop_toBottomOf="@+id/hardLeastFlipsText" />
 
             <TextView
                 android:id="@+id/easyGamesPlayedText"
@@ -143,6 +143,46 @@
                 app:layout_constraintTop_toBottomOf="@+id/easyFastestTimeText" />
 
             <TextView
+                android:id="@+id/easyLeastFlipsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_leastflips"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@+id/easyFastestTimeText"
+                app:layout_constraintTop_toBottomOf="@+id/easyPointsScoredText" />
+
+            <TextView
+                android:id="@+id/mediumLeastFlipsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_leastflips"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@+id/easyFastestTimeText"
+                app:layout_constraintTop_toBottomOf="@+id/mediumPointsScoredText" />
+
+            <TextView
+                android:id="@+id/hardLeastFlipsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_leastflips"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@+id/easyFastestTimeText"
+                app:layout_constraintTop_toBottomOf="@+id/hardPointsScoredText" />
+
+            <TextView
+                android:id="@+id/totalLeastFlipsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_leastflips"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@+id/easyFastestTimeText"
+                app:layout_constraintTop_toBottomOf="@+id/totalPointsScoredText" />
+
+            <TextView
                 android:id="@+id/mediumPointsScoredText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -201,6 +241,16 @@
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="@+id/hardGamesPlayedText"
                 app:layout_constraintTop_toBottomOf="@+id/totalGamesPlayedText" />
+
+            <Button
+                android:id="@+id/resetStatsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/reset_stats"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalLeastFlipsText" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

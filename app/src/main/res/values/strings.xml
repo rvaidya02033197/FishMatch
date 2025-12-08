@@ -13,4 +13,8 @@
     <string name="stats_gamesplayed">Games Played: 0</string>
     <string name="stats_fastesttime">Fastest Time: ---</string>
     <string name="stats_pointsscored">Points Scored: 0</string>
+    <string name="stats_leastflips">Shortest Win: ---</string>
+    <string name="reset_stats">Reset Stats</string>
+    <string name="reset_stats_confirm">Are you sure?</string>
+"
 </resources>

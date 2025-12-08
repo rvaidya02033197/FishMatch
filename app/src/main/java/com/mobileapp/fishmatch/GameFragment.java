@@ -248,8 +248,13 @@ public class GameFragment extends Fragment {
         int currentPointsEarned = prefs.getInt(diffString + "points_earned", 0);
         editor.putInt(diffString + "points_scored", currentPointsEarned + game.userPoints());
 
+        // check if new least amount of flips for this mode, update if so
+        int currentFlips = prefs.getInt(diffString + "least_flips", Integer.MAX_VALUE);
+        if (game.flips < currentFlips) {
+            editor.putInt(diffString + "least_flips", game.flips);
+        }
 
+        // commit changes asynchronously
         editor.apply();
-
     }
 }
