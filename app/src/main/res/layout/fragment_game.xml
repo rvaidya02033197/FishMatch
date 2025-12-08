@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="40dp"
+    android:layout_marginTop="0dp"
+    android:background="@color/game_background_color"
     tools:context=".GameFragment">
 
     <ImageButton

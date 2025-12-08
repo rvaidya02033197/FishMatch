@@ -103,19 +103,27 @@ public class FishMatch {
         String name = tile.getResources().getResourceEntryName(fishImage);
         Log.d("Gameplay", "Flipped a tile with the image: " + name);
 
-        // register the flip
-        this.flips++;
-
         // has a tile been flipped already?
         if (fish1.isEmpty()) {  // is string empty?
             // set first fish
             fish1 = name;
             tile1 = tile;
+
+            // register the flip
+            this.flips++;
+            Log.d("Gameplay", "Flips: " + this.flips);
         } else if (fish2.isEmpty() && tile1 != tile) {  // is string empty and not the same tile as first flip?
             // set second fish
             fish2 = name;
             tile2 = tile;
+
+            // register the flip
+            this.flips++;
+            Log.d("Gameplay", "Flips: " + this.flips);
+
             compare();
+        } else if (tile1 == tile) {
+            // ignore
         } else {
             // you shouldn't end up here, start freaking out
             Log.d("Error", "Game handler has " + fish1 + " and " + fish2 + ", undefined behavior");
