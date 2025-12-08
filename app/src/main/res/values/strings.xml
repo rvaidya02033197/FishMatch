@@ -16,5 +16,9 @@
     <string name="stats_leastflips">Shortest Win: ---</string>
     <string name="reset_stats">Reset Stats</string>
     <string name="reset_stats_confirm">Are you sure?</string>
-"
+    <string name="settings_game_speed_title">Game Speed"</string>
+    <string name="settings_game_speed_option_1x">1x</string>
+    <string name="settings_game_speed_option_2x">2x</string>
+    <string name="settings_game_speed_option_4x">4x</string>
+    <string name="apply">Apply Changes</string>
 </resources>

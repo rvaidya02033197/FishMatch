@@ -29,11 +29,16 @@ public class FishMatch {
     private int scoreToWin = -1;
     private int userScore = 0;
 
+    // internal speed modifier
+    private int speed = 1;
+
     // constant tile background todo: allow user to customize this image
     private final int tileBack = R.drawable.stripes;
 
-    // constant millisecond delay before taking action after 2nd tile flip
-    private final int msDelay = 1000;
+    // millisecond delay before taking action after 2nd tile flip
+    private int msDelay = 1000;
+    // millisecond delay for fade-out time
+    private int msFadeOut = 400;
 
     private final List<String> matchCongrats = Arrays.asList(
             "Nice!",
@@ -95,6 +100,15 @@ public class FishMatch {
         if (userScore >= scoreToWin) {
             winListener.onWin();
         }
+    }
+
+    /** set the in game speed **/
+    public void setSpeed(int speed) {
+        this.speed = speed;
+        this.msDelay = 1000 / speed;
+        this.msFadeOut = 400 / speed;
+        Log.d("Game Setup", "Game speed set to " + speed + "x");
+        Log.d("Game Setup", "msDelay: " + msDelay + ", msFadeOut: " + msFadeOut);
     }
 
     /** notify the game handler that a tile has been flipped, provide the tile and fish image **/
@@ -169,8 +183,8 @@ public class FishMatch {
         tile2.setEnabled(false);
 
         // fade out tiles
-        tile1.animate().alpha(0).setDuration(300);  // 300ms fade out
-        tile2.animate().alpha(0).setDuration(300);
+        tile1.animate().alpha(0).setDuration(msFadeOut);
+        tile2.animate().alpha(0).setDuration(msFadeOut);
 
         // remove internal references to tiles
         clear(true);

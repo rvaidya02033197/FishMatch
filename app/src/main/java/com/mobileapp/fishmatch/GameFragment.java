@@ -61,6 +61,9 @@ public class GameFragment extends Fragment {
 
         game = new FishMatch();
 
+        // get settings preferences
+        SharedPreferences settingsPrefs = requireActivity().getSharedPreferences("FishMatchSettings", Context.MODE_PRIVATE);
+
         // This is a listener to keep UI out of FishMatch Logic File
         game.setMessageListener(message -> {
             binding.inGameMessages.setAlpha(1f);
@@ -75,6 +78,9 @@ public class GameFragment extends Fragment {
         game.setWinListener(() -> {
             gameEnd();
         });
+
+        // set speed preference
+        game.setSpeed(settingsPrefs.getInt("game_speed", 1));
 
         // set difficulty internally
         game.difficulty = difficulty;
@@ -245,7 +251,7 @@ public class GameFragment extends Fragment {
         }
 
         // update total points earned in the difficulty
-        int currentPointsEarned = prefs.getInt(diffString + "points_earned", 0);
+        int currentPointsEarned = prefs.getInt(diffString + "points_scored", 0);
         editor.putInt(diffString + "points_scored", currentPointsEarned + game.userPoints());
 
         // check if new least amount of flips for this mode, update if so
