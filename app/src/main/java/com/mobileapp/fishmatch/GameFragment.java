@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Vector;
 
 public class GameFragment extends Fragment {
@@ -22,7 +21,7 @@ public class GameFragment extends Fragment {
     private FragmentGameBinding binding;
 
     // button vector
-    private Vector<ImageButton> tiles = new Vector<>();
+    private final Vector<ImageButton> tiles = new Vector<>();
 
     // clock status flag
     private boolean clockRunning = false;
@@ -31,7 +30,7 @@ public class GameFragment extends Fragment {
     private long baseTime = 0;
 
     // const fish image array
-    private Vector<Integer> fishImages = new Vector<>(Arrays.asList(
+    private final Vector<Integer> fishImages = new Vector<>(Arrays.asList(
             R.drawable.bass,
             R.drawable.butterfish,
             R.drawable.cod,
@@ -223,7 +222,7 @@ public class GameFragment extends Fragment {
         SharedPreferences.Editor editor = prefs.edit();
 
         // determine difficulty and use difficulty prefix to index and update correct stats
-        String diffString = "";
+        String diffString;
         if (game.difficulty == 1) {
             diffString = "easy_";
         } else if (game.difficulty == 2) {
