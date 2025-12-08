@@ -8,4 +8,6 @@
     <string name="medium_difficulty_option">Medium (20 tiles)</string>
     <string name="hard_difficulty_option">Hard (24 tiles)</string>
     <string name="menu_item_stats_title">Stats</string>
+    <string name="stats_gamesplayed">Games Played: 0</string>
+    <string name="stats_fastesttime">Games Played: 0</string>
 </resources>

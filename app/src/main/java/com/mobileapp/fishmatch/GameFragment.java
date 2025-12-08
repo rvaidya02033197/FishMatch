@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import com.mobileapp.fishmatch.databinding.FragmentGameBinding;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.util.Arrays;
 import java.util.List;
@@ -208,8 +210,22 @@ public class GameFragment extends Fragment {
     }
 
     // Function currently just stops timer, later on will navigate to win screen
-    private void gameEnd() {
+    private void gameEnd() { // shared preferences (stats recorded)
         long gameLength = SystemClock.elapsedRealtime() - binding.gameTimer.getBase();
         binding.gameTimer.stop();
+
+        SharedPreferences prefs = requireActivity().getSharedPreferences("FishMatchStats", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        int currentGamesPlayed = prefs.getInt("games_played", 0);
+        editor.putInt("games_played", currentGamesPlayed + 1);
+
+        long currentFastestTime = prefs.getLong("fastest_time", Long.MAX_VALUE);
+        if (gameLength < currentFastestTime) {
+            editor.putLong("fastest_time", gameLength);
+        }
+
+        editor.apply();
+
     }
 }
