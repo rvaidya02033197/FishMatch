@@ -24,8 +24,10 @@ public class GameFragment extends Fragment {
     // button vector
     private Vector<ImageButton> tiles = new Vector<>();
 
+    // clock status flag
     private boolean clockRunning = false;
 
+    // base time for clock
     private long baseTime = 0;
 
     // const fish image array
@@ -75,8 +77,11 @@ public class GameFragment extends Fragment {
             gameEnd();
         });
 
+        // set difficulty internally
+        game.difficulty = difficulty;
+
         // add ImageButtons to array for easier referencing, tiles[i] = tile_i
-        initButtonVector(difficulty);
+        initButtonVector();
 
         // determine fish placement and add listeners
         initFish(tiles.size());
@@ -121,7 +126,7 @@ public class GameFragment extends Fragment {
     }
 
     /** manually construct the vector **/
-    private void initButtonVector(int difficulty) {
+    private void initButtonVector() {
         // manually add all buttons to array
         // todo: use a loop if possible
         tiles.add(binding.tile0);
@@ -140,13 +145,13 @@ public class GameFragment extends Fragment {
         tiles.add(binding.tile13);
         tiles.add(binding.tile14);
         tiles.add(binding.tile15);
-        if (difficulty > 1) {
+        if (game.difficulty > 1) {
             // medium
             tiles.add(binding.tile16);
             tiles.add(binding.tile17);
             tiles.add(binding.tile18);
             tiles.add(binding.tile19);
-            if (difficulty > 2)  {
+            if (game.difficulty > 2)  {
                 // hard
                 tiles.add(binding.tile20);
                 tiles.add(binding.tile21);
@@ -217,13 +222,33 @@ public class GameFragment extends Fragment {
         SharedPreferences prefs = requireActivity().getSharedPreferences("FishMatchStats", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
-        int currentGamesPlayed = prefs.getInt("games_played", 0);
-        editor.putInt("games_played", currentGamesPlayed + 1);
-
-        long currentFastestTime = prefs.getLong("fastest_time", Long.MAX_VALUE);
-        if (gameLength < currentFastestTime) {
-            editor.putLong("fastest_time", gameLength);
+        // determine difficulty and use difficulty prefix to index and update correct stats
+        String diffString = "";
+        if (game.difficulty == 1) {
+            diffString = "easy_";
+        } else if (game.difficulty == 2) {
+            diffString = "medium_";
+        } else if (game.difficulty == 3) {
+            diffString = "hard_";
+        } else {
+            Log.d("Gameplay", "Invalid difficulty ("+ game.difficulty +"), storing with 'null_' prefix");
+            diffString = "null_";
         }
+
+        // update games played in the difficulty
+        int currentGamesPlayed = prefs.getInt(diffString + "games_played", 0);
+        editor.putInt(diffString + "games_played", currentGamesPlayed + 1);
+
+        // check if new fastest time, update if so
+        long currentFastestTime = prefs.getLong(diffString + "fastest_time", Long.MAX_VALUE);
+        if (gameLength < currentFastestTime) {
+            editor.putLong(diffString + "fastest_time", gameLength);
+        }
+
+        // update total points earned in the difficulty
+        int currentPointsEarned = prefs.getInt(diffString + "points_earned", 0);
+        editor.putInt(diffString + "points_scored", currentPointsEarned + game.userPoints());
+
 
         editor.apply();
 

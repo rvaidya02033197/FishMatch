@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">Fish Match</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_item_settings_title">Settings</string>
     <string name="menu_item_game_title">Play!</string>
     <string name="easy_difficulty_option">Easy (16 tiles) </string>
     <string name="medium_difficulty_option">Medium (20 tiles)</string>
     <string name="hard_difficulty_option">Hard (24 tiles)</string>
+    <string name="easy_header">Easy</string>
+    <string name="medium_header">Medium</string>
+    <string name="hard_header">Hard</string>
+    <string name="total_header">All Modes</string>
     <string name="menu_item_stats_title">Stats</string>
     <string name="stats_gamesplayed">Games Played: 0</string>
-    <string name="stats_fastesttime">Games Played: 0</string>
+    <string name="stats_fastesttime">Fastest Time: ---</string>
+    <string name="stats_pointsscored">Points Scored: 0</string>
 </resources>

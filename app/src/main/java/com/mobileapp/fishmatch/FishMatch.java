@@ -64,9 +64,8 @@ public class FishMatch {
     3+ flips at a time similar to a mutex lock. The "lock" is released in clear()   */
     public boolean canFlip = true;
 
-    /* todo: track relevant statistics for the stats page, either as public
-        member variables or as private member variables with a public getter
-    * */
+    // -1 undefined, 1 easy, 2 medium, 3 hard
+    public int difficulty = -1;
 
     /*************************************
      *   PUBLIC METHODS
@@ -122,6 +121,9 @@ public class FishMatch {
 
     /** set the score to win after determining number of tiles in play **/
     public void setScoreToWin(int x) { scoreToWin = x; }
+
+    /** return the number of points the player has earned **/
+    public int userPoints() { return this.userScore; }
 
     /*************************************
      *   PRIVATE METHODS
