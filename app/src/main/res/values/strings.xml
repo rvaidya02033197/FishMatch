@@ -21,4 +21,24 @@
     <string name="settings_game_speed_option_2x">2x</string>
     <string name="settings_game_speed_option_4x">4x</string>
     <string name="apply">Apply Changes</string>
+    <string name="settings_tile_backs_title">Tile Backs</string>
+    <string name="tile_back_sea_blue">Sea Blue</string>
+    <string name="tile_back_fire_coral">Fire Coral</string>
+    <string name="tile_back_seaweed">Seaweed</string>
+    <string name="tile_back_ocean_depth">Ocean Depth</string>
+    <string name="tile_back_snail_shell">Snail Shell</string>
+    <string name="tile_back_starfish">Starfish</string>
+    <string name="tile_back_crown">Crown</string>
+    <string name="tile_back_sunset">Sunset</string>
+    <string name="tile_back_fishy_tile">Fishy Tile</string>
+    <string name="tile_back_sea_blue_label">FREE</string>
+    <string name="tile_back_fire_coral_label">25 Points</string>
+    <string name="tile_back_seaweed_label">25 Points</string>
+    <string name="tile_back_ocean_depth_label">50 Points</string>
+    <string name="tile_back_snail_shell_label">100 Points</string>
+    <string name="tile_back_starfish_label">200 Points</string>
+    <string name="tile_back_crown_label">200 Points</string>
+    <string name="tile_back_sunset_label">300 Points</string>
+    <string name="tile_back_fishy_tile_label">500 Points</string>
+    <string name="shop_point_total">Points Available: </string>
 </resources>

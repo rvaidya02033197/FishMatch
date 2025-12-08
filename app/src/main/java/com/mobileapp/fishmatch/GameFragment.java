@@ -82,6 +82,9 @@ public class GameFragment extends Fragment {
         // set speed preference
         game.setSpeed(settingsPrefs.getInt("game_speed", 1));
 
+        // set tile back according to settings selection
+        game.tileBack = settingsPrefs.getInt("tile_back", R.drawable.tile_sea_blue);
+
         // set difficulty internally
         game.difficulty = difficulty;
 
@@ -90,6 +93,9 @@ public class GameFragment extends Fragment {
 
         // determine fish placement and add listeners
         initFish(tiles.size());
+
+        // apply the tile backs manually
+        applyTileBacks();
 
         return view;
     }
@@ -219,6 +225,13 @@ public class GameFragment extends Fragment {
         });
     }
 
+    /** apply internally stored image to all tiles in play **/
+    private void applyTileBacks() {
+        for (int i = 0; i < tiles.size(); i++) {
+            tiles.get(i).setBackgroundResource(game.tileBack);
+        }
+    }
+
     // Function currently just stops timer, later on will navigate to win screen
     private void gameEnd() { // shared preferences (stats recorded)
         long gameLength = SystemClock.elapsedRealtime() - binding.gameTimer.getBase();
@@ -226,6 +239,10 @@ public class GameFragment extends Fragment {
 
         SharedPreferences prefs = requireActivity().getSharedPreferences("FishMatchStats", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
+        SharedPreferences settingsPrefs = requireActivity().getSharedPreferences("FishMatchSettings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor settingsEditor = settingsPrefs.edit();
+
+
 
         // determine difficulty and use difficulty prefix to index and update correct stats
         String diffString;
@@ -254,6 +271,10 @@ public class GameFragment extends Fragment {
         int currentPointsEarned = prefs.getInt(diffString + "points_scored", 0);
         editor.putInt(diffString + "points_scored", currentPointsEarned + game.userPoints());
 
+        // update total points for user to spend
+        int pointTotal = settingsPrefs.getInt("point_total", 0);
+        settingsEditor.putInt("point_total", pointTotal + game.userPoints());
+
         // check if new least amount of flips for this mode, update if so
         int currentFlips = prefs.getInt(diffString + "least_flips", Integer.MAX_VALUE);
         if (game.flips < currentFlips) {
@@ -262,5 +283,6 @@ public class GameFragment extends Fragment {
 
         // commit changes asynchronously
         editor.apply();
+        settingsEditor.apply();
     }
 }

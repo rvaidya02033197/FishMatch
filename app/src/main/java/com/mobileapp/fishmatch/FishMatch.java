@@ -32,9 +32,6 @@ public class FishMatch {
     // internal speed modifier
     private int speed = 1;
 
-    // constant tile background todo: allow user to customize this image
-    private final int tileBack = R.drawable.stripes;
-
     // millisecond delay before taking action after 2nd tile flip
     private int msDelay = 1000;
     // millisecond delay for fade-out time
@@ -74,6 +71,9 @@ public class FishMatch {
 
     // number of flips made
     public int flips = 0;
+
+    // constant tile background
+    public int tileBack = R.drawable.tile_sea_blue;
 
     /*************************************
      *   PUBLIC METHODS
