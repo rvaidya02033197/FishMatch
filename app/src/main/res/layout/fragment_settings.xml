@@ -110,6 +110,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/iconTileOceanDepth" />
 
             <ImageView
+                android:id="@+id/iconTileKelpWeave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:src="@drawable/standard_kelp_weave_tile"
+                app:layout_constraintStart_toStartOf="@+id/iconTileSeaBlue"
+                app:layout_constraintTop_toBottomOf="@+id/iconTileSnailShell" />
+
+            <ImageView
                 android:id="@+id/iconTileStarfish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,7 +127,7 @@
                 android:layout_weight="1"
                 android:src="@drawable/tile_starfish"
                 app:layout_constraintStart_toStartOf="@+id/iconTileSeaBlue"
-                app:layout_constraintTop_toBottomOf="@+id/iconTileSnailShell" />
+                app:layout_constraintTop_toBottomOf="@+id/iconTileKelpWeave" />
 
             <ImageView
                 android:id="@+id/iconTileCrown"
@@ -140,6 +150,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/iconTileCrown" />
 
             <ImageView
+                android:id="@+id/iconTileSeaglassKelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:src="@drawable/stained_glass_kelp_weave_tile"
+                app:layout_constraintStart_toStartOf="@+id/iconTileSeaBlue"
+                app:layout_constraintTop_toBottomOf="@+id/iconTileSunset" />
+
+            <ImageView
                 android:id="@+id/iconTileFishyTile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,7 +167,17 @@
                 android:layout_weight="1"
                 android:src="@drawable/tile_fishy_tile"
                 app:layout_constraintStart_toStartOf="@+id/iconTileSeaBlue"
-                app:layout_constraintTop_toBottomOf="@+id/iconTileSunset" />
+                app:layout_constraintTop_toBottomOf="@+id/iconTileSeaglassKelp" />
+
+            <ImageView
+                android:id="@+id/iconJellyfishTile"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:src="@drawable/dreams_of_a_greater_ocean"
+                app:layout_constraintStart_toStartOf="@+id/iconTileSeaBlue"
+                app:layout_constraintTop_toBottomOf="@+id/iconTileFishyTile" />
 
             <RadioGroup
                 android:id="@+id/tileBackButtons"
@@ -192,6 +222,13 @@
                     android:text="@string/tile_back_snail_shell" />
 
                 <RadioButton
+                    android:id="@+id/tileKelpWeaveButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/tile_back_kelp_weave" />
+
+                <RadioButton
                     android:id="@+id/tileStarfishButton"
                     android:layout_width="match_parent"
                     android:layout_height="128dp"
@@ -213,11 +250,25 @@
                     android:text="@string/tile_back_sunset" />
 
                 <RadioButton
+                    android:id="@+id/tileSeaGlassKelpButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/tile_back_sea_glass_kelp" />
+
+                <RadioButton
                     android:id="@+id/tileFishyTileButton"
                     android:layout_width="match_parent"
                     android:layout_height="128dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/tile_back_fishy_tile" />
+
+                <RadioButton
+                    android:id="@+id/tileJellyfishTileButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/tile_back_jellyfish" />
 
             </RadioGroup>
 
@@ -302,6 +353,16 @@
                 app:layout_constraintTop_toTopOf="@+id/iconTileSnailShell" />
 
             <Button
+                android:id="@+id/tileKelpWeavePurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:text="@string/tile_back_kelp_weave_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileKelpWeave"
+                app:layout_constraintStart_toEndOf="@+id/iconTileKelpWeave"
+                app:layout_constraintTop_toTopOf="@+id/iconTileKelpWeave" />
+
+            <Button
                 android:id="@+id/tileStarfishPurchaseButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -332,6 +393,16 @@
                 app:layout_constraintTop_toTopOf="@+id/iconTileSunset" />
 
             <Button
+                android:id="@+id/tileSeaGlassKelpButtonPurchase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:text="@string/tile_back_sea_glass_kelp_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileSeaglassKelp"
+                app:layout_constraintStart_toEndOf="@+id/iconTileSeaglassKelp"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSeaglassKelp" />
+
+            <Button
                 android:id="@+id/tileFishyTilePurchaseButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -340,6 +411,16 @@
                 app:layout_constraintBottom_toBottomOf="@+id/iconTileFishyTile"
                 app:layout_constraintStart_toEndOf="@+id/iconTileFishyTile"
                 app:layout_constraintTop_toTopOf="@+id/iconTileFishyTile" />
+
+            <Button
+                android:id="@+id/tileJellyfishTilePurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:text="@string/tile_back_jellyfish_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconJellyfishTile"
+                app:layout_constraintStart_toEndOf="@+id/iconJellyfishTile"
+                app:layout_constraintTop_toTopOf="@+id/iconJellyfishTile" />
 
             <TextView
                 android:id="@+id/pointTotalText"

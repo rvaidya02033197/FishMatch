@@ -102,6 +102,15 @@ public class SettingsFragment extends Fragment {
             binding.tileSnailShellPurchaseButton.setEnabled(true);
             binding.tileSnailShellButton.setEnabled(false);
         }
+        if (prefs.getBoolean("tile_kelp_weave_purchased", false)) {
+            // unlocked
+            binding.tileKelpWeavePurchaseButton.setEnabled(false);
+            binding.tileKelpWeaveButton.setEnabled(true);
+        } else {
+            // locked
+            binding.tileKelpWeavePurchaseButton.setEnabled(true);
+            binding.tileKelpWeaveButton.setEnabled(false);
+        }
         // starfish
         if (prefs.getBoolean("tile_starfish_purchased", false)) {
             // unlocked
@@ -132,6 +141,16 @@ public class SettingsFragment extends Fragment {
             binding.tileSunsetPurchaseButton.setEnabled(true);
             binding.tileSunsetButton.setEnabled(false);
         }
+        // Stain Glass Kelp Weave
+        if (prefs.getBoolean("tile_sea_glass_kelp_purchased", false)) {
+            // unlocked
+            binding.tileSeaGlassKelpButtonPurchase.setEnabled(false);
+            binding.tileSeaGlassKelpButton.setEnabled(true);
+        } else {
+            // locked
+            binding.tileSeaGlassKelpButtonPurchase.setEnabled(true);
+            binding.tileSeaGlassKelpButton.setEnabled(false);
+        }
         // fishy tile
         if (prefs.getBoolean("tile_fishy_tile_purchased", false)) {
             // unlocked
@@ -141,6 +160,16 @@ public class SettingsFragment extends Fragment {
             // locked
             binding.tileFishyTilePurchaseButton.setEnabled(true);
             binding.tileFishyTileButton.setEnabled(false);
+        }
+        // Jellyfish Tile
+        if (prefs.getBoolean("tile_jellyfish_tile_purchased", false)) {
+            // unlocked
+            binding.tileJellyfishTilePurchaseButton.setEnabled(false);
+            binding.tileJellyfishTileButton.setEnabled(true);
+        } else {
+            // locked
+            binding.tileJellyfishTilePurchaseButton.setEnabled(true);
+            binding.tileJellyfishTileButton.setEnabled(false);
         }
         /** set callbacks for shop items **/
         // sea blue
@@ -203,6 +232,20 @@ public class SettingsFragment extends Fragment {
                 updatePointTotal(prefs);
             }
         });
+        // Standard Kelp Weave
+        binding.tileKelpWeavePurchaseButton.setOnClickListener(v -> {
+            int pointTotal = prefs.getInt("point_total", 0);
+            int price = 200;
+            if (pointTotal >= price) {
+                pointTotal -= price;
+                editor.putInt("point_total", pointTotal);
+                editor.putBoolean("tile_kelp_weave_purchased", true);
+                editor.apply();
+                binding.tileKelpWeavePurchaseButton.setEnabled(false);
+                binding.tileKelpWeaveButton.setEnabled(true);
+                updatePointTotal(prefs);
+            }
+        });
         // starfish
         binding.tileStarfishPurchaseButton.setOnClickListener(v -> {
             int pointTotal = prefs.getInt("point_total", 0);
@@ -245,6 +288,20 @@ public class SettingsFragment extends Fragment {
                 updatePointTotal(prefs);
             }
         });
+        // Stained-Glass Kelp
+        binding.tileSeaGlassKelpButtonPurchase.setOnClickListener(v -> {
+            int pointTotal = prefs.getInt("point_total", 0);
+            int price = 300;
+            if (pointTotal >= price) {
+                pointTotal -= price;
+                editor.putInt("point_total", pointTotal);
+                editor.putBoolean("tile_sea_glass_kelp_purchased", true);
+                editor.apply();
+                binding.tileSeaGlassKelpButtonPurchase.setEnabled(false);
+                binding.tileSeaGlassKelpButton.setEnabled(true);
+                updatePointTotal(prefs);
+            }
+        });
         // fishy tile
         binding.tileFishyTilePurchaseButton.setOnClickListener(v -> {
             int pointTotal = prefs.getInt("point_total", 0);
@@ -256,6 +313,20 @@ public class SettingsFragment extends Fragment {
                 editor.apply();
                 binding.tileFishyTilePurchaseButton.setEnabled(false);
                 binding.tileFishyTileButton.setEnabled(true);
+                updatePointTotal(prefs);
+            }
+        });
+        // Jellyfish Tile
+        binding.tileJellyfishTilePurchaseButton.setOnClickListener(v -> {
+            int pointTotal = prefs.getInt("point_total", 0);
+            int price = 2000;
+            if (pointTotal >= price) {
+                pointTotal -= price;
+                editor.putInt("point_total", pointTotal);
+                editor.putBoolean("tile_jellyfish_tile_purchased", true);
+                editor.apply();
+                binding.tileJellyfishTilePurchaseButton.setEnabled(false);
+                binding.tileJellyfishTileButton.setEnabled(true);
                 updatePointTotal(prefs);
             }
         });
@@ -272,12 +343,18 @@ public class SettingsFragment extends Fragment {
                 editor.putInt("tile_back", R.drawable.tile_ocean_depth);
             } else if (checkedId == binding.tileSnailShellButton.getId()) {
                 editor.putInt("tile_back", R.drawable.tile_snail_shell);
+            } else if (checkedId == binding.tileKelpWeaveButton.getId()) {
+                editor.putInt("tile_back", R.drawable.standard_kelp_weave_tile);
             } else if (checkedId == binding.tileStarfishButton.getId()) {
                 editor.putInt("tile_back", R.drawable.tile_starfish);
             } else if (checkedId == binding.tileCrownButton.getId()) {
                 editor.putInt("tile_back", R.drawable.tile_crown);
             } else if (checkedId == binding.tileSunsetButton.getId()) {
                 editor.putInt("tile_back", R.drawable.tile_sunset);
+            } else if (checkedId == binding.tileSeaGlassKelpButton.getId()) {
+                editor.putInt("tile_back", R.drawable.stained_glass_kelp_weave_tile);
+            } else if (checkedId == binding.tileJellyfishTileButton.getId()) {
+                editor.putInt("tile_back", R.drawable.dreams_of_a_greater_ocean);
             } else {
                 editor.putInt("tile_back", R.drawable.tile_fishy_tile);
             }

@@ -38,7 +38,18 @@ public class WinFragment extends Fragment {
             "Whoa! Slow Down Cowboy, Horses Can't Swim!",
             "A Wise Man Once Said, \"A Day Without Matched Fish Is a Day Wasted\"",
             "The Game's Over? Already?",
-            "Good Boys and Girls Eat Their Veggies and Match Their Fish"
+            "Good Boys and Girls Eat Their Veggies and Match Their Fish",
+            "Fish?!?!  FISH!!!!",
+            "Four Score and Seven Flips Ago..",
+            "They Call Me A Pescatarian the Way I Eat Up These Matches",
+            "Leave Any Unmatched?\nI didn't Think So",
+            "Winner Winner Fish Match Dinner",
+            "I Don't Think You Could Ask For a Better Day to Match Fish",
+            "Captain! Captain! Somebody Matched All of Our Fish!",
+            "A Fish Match a Day Keep the Doctor Away",
+            "Don't Forget to Come Up For Air!",
+            "Rough Waters Out There Today Huh",
+            "A Trout, and a Salmon Walk Into a Bar and uh.. I Forget The Rest..."
             );
     // Separate List of Congratulations in case a there is a new high score
     private final List<String> gameHighScoreCongrats = Arrays.asList(
@@ -49,7 +60,12 @@ public class WinFragment extends Fragment {
             "Record...SMASHED!",
             "Blub Blub Blub Blub Blub (That's Some High Fish Praise)",
             "I See Great Things In Your Future",
-            "Stunning Work Today, I'm Proud of You"
+            "Stunning Work Today, I'm Proud of You",
+            "You Should Sit Down For This One",
+            "The Glorious Ocean Light of Poseidon Shines Upon You",
+            "Mercy! Mercy! The Fish Can't Handle This Much Matching!",
+            "You Always Find Ways to Surprise Me",
+            "Atlantis Awaits You My Child"
     );
 
     public int randomIndex(int size) { return rng.nextInt(size); }

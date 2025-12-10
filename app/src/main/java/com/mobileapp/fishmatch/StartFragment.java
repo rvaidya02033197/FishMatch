@@ -11,9 +11,23 @@ import android.view.ViewGroup;
 
 import com.mobileapp.fishmatch.databinding.FragmentStartBinding;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 public class StartFragment extends Fragment {
     // view binding
     private FragmentStartBinding binding;
+
+    private final List<String> startQuips = Arrays.asList(
+            "Let's Match Some Fish, Shall We?",
+            "Are You as Excited to Match as I am?\nLet's Get Started",
+            "Are you Ready Captain?",
+            "What are You Waiting For?\nLet's get Matching!"
+            );
+
+    private final Random rng = new Random();
+    public int randomIndex(int size) { return rng.nextInt(size); }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -23,6 +37,8 @@ public class StartFragment extends Fragment {
 
         // set the difficulty "easy" to be selected by default initially
         binding.easyDifficulty.setChecked(true);
+
+        binding.startScreenQuip.setText(startQuips.get(this.randomIndex(startQuips.size())));
 
         // set the play button callback function
         binding.playButton.setOnClickListener(new View.OnClickListener() {
