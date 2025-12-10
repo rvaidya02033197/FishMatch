@@ -2,6 +2,7 @@ package com.mobileapp.fishmatch;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.os.SystemClock;
 import android.util.Log;
@@ -52,14 +53,18 @@ public class GameFragment extends Fragment {
     // game manager
     private FishMatch game;
 
+    private  View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // initialize view binding, inflate layout
         binding = FragmentGameBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
-        int difficulty = GameFragmentArgs.fromBundle(getArguments()).getDifficulty();
+        view = binding.getRoot();
 
         game = new FishMatch();
+
+        // set difficulty internally
+        game.difficulty = GameFragmentArgs.fromBundle(getArguments()).getDifficulty();
 
         // get settings preferences
         SharedPreferences settingsPrefs = requireActivity().getSharedPreferences("FishMatchSettings", Context.MODE_PRIVATE);
@@ -71,7 +76,7 @@ public class GameFragment extends Fragment {
             binding.inGameMessages.setText(message);
 
             // Congrats text fade away effect.
-            binding.inGameMessages.animate().alpha(0f).setDuration(1000);
+            binding.inGameMessages.animate().alpha(0f).setDuration(1250);
         });
 
         // Win listener so game fragment knows when wins happen immediately
@@ -85,9 +90,6 @@ public class GameFragment extends Fragment {
         // set tile back according to settings selection
         game.tileBack = settingsPrefs.getInt("tile_back", R.drawable.tile_sea_blue);
 
-        // set difficulty internally
-        game.difficulty = difficulty;
-
         // add ImageButtons to array for easier referencing, tiles[i] = tile_i
         initButtonVector();
 
@@ -96,6 +98,14 @@ public class GameFragment extends Fragment {
 
         // apply the tile backs manually
         applyTileBacks();
+
+        binding.backToStartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate Back to Start
+                Navigation.findNavController(v).navigate(R.id.action_gameFragment_to_startFragment);
+            }
+        });
 
         return view;
     }
@@ -237,6 +247,9 @@ public class GameFragment extends Fragment {
         long gameLength = SystemClock.elapsedRealtime() - binding.gameTimer.getBase();
         binding.gameTimer.stop();
 
+        boolean movesHighScore = false;
+        boolean timeHighScore = false;
+
         SharedPreferences prefs = requireActivity().getSharedPreferences("FishMatchStats", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         SharedPreferences settingsPrefs = requireActivity().getSharedPreferences("FishMatchSettings", Context.MODE_PRIVATE);
@@ -264,6 +277,7 @@ public class GameFragment extends Fragment {
         // check if new fastest time, update if so
         long currentFastestTime = prefs.getLong(diffString + "fastest_time", Long.MAX_VALUE);
         if (gameLength < currentFastestTime) {
+            timeHighScore = true;
             editor.putLong(diffString + "fastest_time", gameLength);
         }
 
@@ -276,13 +290,19 @@ public class GameFragment extends Fragment {
         settingsEditor.putInt("point_total", pointTotal + game.userPoints());
 
         // check if new least amount of flips for this mode, update if so
+        int totalTurns = game.flips / 2;
         int currentFlips = prefs.getInt(diffString + "least_flips", Integer.MAX_VALUE);
-        if (game.flips < currentFlips) {
-            editor.putInt(diffString + "least_flips", game.flips);
+        if (totalTurns < currentFlips) {
+            movesHighScore = true;
+            editor.putInt(diffString + "least_flips", totalTurns);
         }
 
         // commit changes asynchronously
         editor.apply();
         settingsEditor.apply();
+        GameFragmentDirections.ActionGameFragmentToWinFragment action =
+                GameFragmentDirections.actionGameFragmentToWinFragment(
+                        gameLength, totalTurns, game.userPoints(), timeHighScore, movesHighScore);
+        Navigation.findNavController(view).navigate(action);
     }
 }

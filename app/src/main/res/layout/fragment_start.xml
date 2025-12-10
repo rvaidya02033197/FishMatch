@@ -8,6 +8,19 @@
     android:background="@color/play_background_color"
     tools:context=".StartFragment">
 
+    <ImageView
+        android:id="@+id/tile_23"
+        android:layout_width="424dp"
+        android:layout_height="329dp"
+        android:background="@drawable/fish_match_logo_no_background"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <Button
         android:id="@+id/playButton"
         android:layout_width="120dp"
@@ -17,11 +30,13 @@
         android:paddingVertical="10dp"
         android:text="@string/menu_item_game_title"
         android:textSize="24sp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/play_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.8" />
 
     <RadioGroup
         android:id="@+id/difficultyGroup"
@@ -30,25 +45,30 @@
         app:layout_constraintBottom_toTopOf="@+id/playButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".9">
 
         <RadioButton
             android:id="@+id/easyDifficulty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/easy_difficulty_option" />
+            android:text="@string/easy_difficulty_option"
+            android:textColor="@color/black"/>
 
         <RadioButton
             android:id="@+id/mediumDifficulty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/medium_difficulty_option" />
+            android:text="@string/medium_difficulty_option"
+            android:textColor="@color/black"/>
 
         <RadioButton
             android:id="@+id/hardDifficulty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hard_difficulty_option" />
+            android:text="@string/hard_difficulty_option"
+            android:textColor="@color/black"/>
+
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

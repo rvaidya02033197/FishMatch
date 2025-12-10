@@ -149,19 +149,19 @@ public class StatsFragment extends Fragment {
         if (easyLeastFlips == Integer.MAX_VALUE) {
             binding.easyLeastFlipsText.setText("Shortest Win: ---");
         } else {
-            binding.easyLeastFlipsText.setText("Shortest Win: " + easyLeastFlips + " flips");
+            binding.easyLeastFlipsText.setText("Shortest Win: " + easyLeastFlips + " Turns");
         }
         // medium
         if (mediumLeastFlips == Integer.MAX_VALUE) {
             binding.mediumLeastFlipsText.setText("Shortest Win: ---");
         } else {
-            binding.mediumLeastFlipsText.setText("Shortest Win: " + mediumLeastFlips + " flips");
+            binding.mediumLeastFlipsText.setText("Shortest Win: " + mediumLeastFlips + " Turns");
         }
         // hard
         if (hardLeastFlips == Integer.MAX_VALUE) {
             binding.hardLeastFlipsText.setText("Shortest Win: ---");
         } else {
-            binding.hardLeastFlipsText.setText("Shortest Win: " + hardLeastFlips + " flips");
+            binding.hardLeastFlipsText.setText("Shortest Win: " + hardLeastFlips + " Turns");
         }
         // total
         if (totalLeastFlips == Integer.MAX_VALUE) {

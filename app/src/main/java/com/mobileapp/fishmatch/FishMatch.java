@@ -46,10 +46,10 @@ public class FishMatch {
             "Fintastic!",
             "Wowza!",
             "Holy Mackerel!",
-            "Fish!!",
-            "Two Fish with One Hook!",
+            "Fish!",
             "Great Catch!",
-            "Holy Fishpaste!"
+            "Holy Fishpaste!",
+            "Catch of the Day!"
     );
 
     private FragmentGameBinding gameBinding;

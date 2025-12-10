@@ -41,4 +41,12 @@
     <string name="tile_back_sunset_label">300 Points</string>
     <string name="tile_back_fishy_tile_label">500 Points</string>
     <string name="shop_point_total">Points Available: </string>
+    <string name="congratsText">You Win! </string>
+    <string name="winQuip">Nice Matching Out There </string>
+    <string name="statsTitle">How Did You Do?</string>
+    <string name="win_screen_button_title">Back to Start</string>
+    <string name="backToStartButton">Quit\nGame</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

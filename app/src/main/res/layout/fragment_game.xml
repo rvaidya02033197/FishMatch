@@ -13,6 +13,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:background="@drawable/stripes"
+        android:layout_marginTop="40dp"
         android:importantForAccessibility="no"
         app:layout_constraintBottom_toTopOf="@+id/tile_4"
         app:layout_constraintEnd_toStartOf="@+id/tile_1"
@@ -298,10 +299,25 @@
         android:layout_height="wrap_content"
         android:textSize="40sp"
         android:text=""
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias=".625"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/backToStartButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/back_button"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

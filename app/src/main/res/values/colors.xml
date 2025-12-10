@@ -3,8 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="stat_reset_button">#970000</color>
-    <color name="stats_background_color">#4D006388</color>
-    <color name="play_background_color">#4D4D7EFF</color>
-    <color name="game_background_color">#4D70CDFF</color>
+    <color name="stats_background_color">#6135B2E2</color>
+    <color name="play_background_color">#C73894BA</color>
+    <color name="win_background_color">#C73894BA</color>
+    <color name="game_background_color">#4D5AA5CE</color>
     <color name="settings_background_color">#4D6D7C81</color>
+    <color name="bottom_menu">#B43C9BEB</color>
+    <color name="play_button">#FF9800</color>
 </resources>
