@@ -41,7 +41,7 @@ public class WinFragment extends Fragment {
             "Good Boys and Girls Eat Their Veggies and Match Their Fish",
             "Fish?!?!  FISH!!!!",
             "Four Score and Seven Flips Ago..",
-            "They Call Me A Pescatarian the Way I Eat Up These Matches",
+            "They Call Me A Pescatarian the Way I Eat Up These..Fish?",
             "Leave Any Unmatched?\nI didn't Think So",
             "Winner Winner Fish Match Dinner",
             "I Don't Think You Could Ask For a Better Day to Match Fish",
@@ -50,6 +50,7 @@ public class WinFragment extends Fragment {
             "Don't Forget to Come Up For Air!",
             "Rough Waters Out There Today Huh",
             "A Trout, and a Salmon Walk Into a Bar and uh.. I Forget The Rest..."
+            // "Jeez Take Me Out to Dinner First"
             );
     // Separate List of Congratulations in case a there is a new high score
     private final List<String> gameHighScoreCongrats = Arrays.asList(
@@ -65,7 +66,10 @@ public class WinFragment extends Fragment {
             "The Glorious Ocean Light of Poseidon Shines Upon You",
             "Mercy! Mercy! The Fish Can't Handle This Much Matching!",
             "You Always Find Ways to Surprise Me",
-            "Atlantis Awaits You My Child"
+            "Atlantis Awaits You My Child",
+            "Way to Put Me To Shame",
+            "Clearly Not Your First Rodeo",
+            "Though Guy Huh?\n\"Ohh Look at Me With my New Record\""
     );
 
     public int randomIndex(int size) { return rng.nextInt(size); }

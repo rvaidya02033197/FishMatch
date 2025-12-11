@@ -97,7 +97,7 @@
         app:layout_constraintVertical_bias="0.953" />
 
     <ImageView
-        android:id="@+id/timeHighScoreImage"
+        android:id="@+id/movesHighScoreImage"
         android:layout_width="98dp"
         android:layout_height="69dp"
         android:background="@drawable/high_score"
@@ -109,7 +109,7 @@
         app:layout_constraintVertical_bias="0.775" />
 
     <ImageView
-        android:id="@+id/movesHighScoreImage"
+        android:id="@+id/timeHighScoreImage"
         android:layout_width="98dp"
         android:layout_height="69dp"
         android:background="@drawable/high_score"

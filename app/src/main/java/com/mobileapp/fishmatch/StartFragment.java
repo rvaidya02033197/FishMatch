@@ -23,7 +23,15 @@ public class StartFragment extends Fragment {
             "Let's Match Some Fish, Shall We?",
             "Are You as Excited to Match as I am?\nLet's Get Started",
             "Are you Ready Captain?",
-            "What are You Waiting For?\nLet's get Matching!"
+            "What are You Waiting For?\nLet's get Matching!",
+            "If You Got a Nickel For Every Fish Matched...\n You Could be Very Rich One Day",
+            "I don't Know About You,\n But These Fish Are in For a Good Matching",
+            "Why Don't You Show Me What You're Made Of",
+            "The Fish Are Ready,\nAre You?",
+            "Match Me to the Moon,\nAnd Let Me Fish Among the Stars",
+            "I Think We've Been Waiting Long Enough,\nIt's Matching Time",
+            "About Time You Showed Up, Let's Match Some Fish",
+            "We've Been Waiting For You, It's Time to Match"
             );
 
     private final Random rng = new Random();
