@@ -117,30 +117,23 @@ public class FishMatch {
         String name = tile.getResources().getResourceEntryName(fishImage);
         Log.d("Gameplay", "Flipped a tile with the image: " + name);
 
-        // has a tile been flipped already?
-        if (fish1.isEmpty()) {  // is string empty?
-            // set first fish
+        tile.animate().rotationY(90).setDuration(150).withEndAction(() -> {
+
+            tile.setBackgroundResource(fishImage);
+
+            tile.setRotationY(-90);
+
+            tile.animate().rotationY(0).setDuration(150).start();
+        }).start();
+        if (fish1.isEmpty()) {
             fish1 = name;
             tile1 = tile;
-
-            // register the flip
             this.flips++;
-            Log.d("Gameplay", "Flips: " + this.flips);
-        } else if (fish2.isEmpty() && tile1 != tile) {  // is string empty and not the same tile as first flip?
-            // set second fish
+        } else if (fish2.isEmpty() && tile1 != tile) {
             fish2 = name;
             tile2 = tile;
-
-            // register the flip
             this.flips++;
-            Log.d("Gameplay", "Flips: " + this.flips);
-
             compare();
-        } else if (tile1 == tile) {
-            // ignore
-        } else {
-            // you shouldn't end up here, start freaking out
-            Log.d("Error", "Game handler has " + fish1 + " and " + fish2 + ", undefined behavior");
         }
     }
 
@@ -182,9 +175,9 @@ public class FishMatch {
         tile1.setEnabled(false);
         tile2.setEnabled(false);
 
-        // fade out tiles
-        tile1.animate().alpha(0).setDuration(msFadeOut);
-        tile2.animate().alpha(0).setDuration(msFadeOut);
+        // scale up (grow) and fade out
+        tile1.animate().scaleX(1.2f).scaleY(1.2f).alpha(0).setDuration(msFadeOut);
+        tile2.animate().scaleX(1.2f).scaleY(1.2f).alpha(0).setDuration(msFadeOut);
 
         // remove internal references to tiles
         clear(true);
@@ -192,10 +185,8 @@ public class FishMatch {
         // check for a win
         if (userScore >= scoreToWin) {
             checkWin();
-            // todo: implement visual win for user
             Log.d("Gameplay", "You win!");
         } else {
-            // Listener message passing to display congrats on correct matchings
             if (messageListener != null) {
                 messageListener.onMessage(matchCongrats.get(this.randomIndex(matchCongrats.size())));
             }
@@ -209,18 +200,25 @@ public class FishMatch {
         fish1 = "";
         fish2 = "";
 
-        // if not successful match, flip tiles face-down
-        if (!success) {
-            tile1.setBackgroundResource(tileBack);
-            tile2.setBackgroundResource(tileBack);
+        // if not successful match, flip tiles face-down with animation
+        if (!success && tile1 != null && tile2 != null) {
+            animateFlipBack(tile1);
+            animateFlipBack(tile2);
         }
 
         // reset internal tile references
         tile1 = null;
         tile2 = null;
 
-        // release "lock" and allow for flipping
+        // release "lock"
         canFlip = true;
+    }
+    private void animateFlipBack(View tile) {
+        tile.animate().rotationY(-90).setDuration(150).withEndAction(() -> {
+            tile.setBackgroundResource(tileBack);
+            tile.setRotationY(90);
+            tile.animate().rotationY(0).setDuration(150).start();
+        }).start();
     }
 
 }

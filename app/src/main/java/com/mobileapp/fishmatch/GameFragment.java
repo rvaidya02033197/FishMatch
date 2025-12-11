@@ -102,8 +102,7 @@ public class GameFragment extends Fragment {
         binding.backToStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate Back to Start
-                Navigation.findNavController(v).navigate(R.id.action_gameFragment_to_startFragment);
+                Navigation.findNavController(v).popBackStack();
             }
         });
 
