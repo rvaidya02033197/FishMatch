@@ -102,7 +102,8 @@ public class GameFragment extends Fragment {
         binding.backToStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).popBackStack();
+                // Navigate Back to Start
+                Navigation.findNavController(v).navigate(R.id.action_gameFragment_to_startFragment);
             }
         });
 
@@ -227,7 +228,6 @@ public class GameFragment extends Fragment {
                     clockRunning = true;
                 }
                 if (game.canFlip) {
-                    view.setBackgroundResource(fishImage);
                     game.flip(view, fishImage);
                 }
             }

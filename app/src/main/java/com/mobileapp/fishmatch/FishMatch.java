@@ -9,6 +9,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.View;
+
 public class FishMatch {
     /*************************************
      *   PRIVATE MEMBER VARIABLES
@@ -36,6 +41,8 @@ public class FishMatch {
     private int msDelay = 1000;
     // millisecond delay for fade-out time
     private int msFadeOut = 400;
+
+    private int msFlipAnimation = 100;
 
     private final List<String> matchCongrats = Arrays.asList(
             "Nice!",
@@ -117,14 +124,13 @@ public class FishMatch {
         String name = tile.getResources().getResourceEntryName(fishImage);
         Log.d("Gameplay", "Flipped a tile with the image: " + name);
 
-        tile.animate().rotationY(90).setDuration(150).withEndAction(() -> {
+        tile.animate().rotationY(90).setDuration(100 / this.speed).withEndAction(() -> {
 
             tile.setBackgroundResource(fishImage);
 
             tile.setRotationY(-90);
-
-            tile.animate().rotationY(0).setDuration(150).start();
-        }).start();
+            tile.animate().rotationY(0).setDuration(300 / this.speed);
+        });
         if (fish1.isEmpty()) {
             fish1 = name;
             tile1 = tile;

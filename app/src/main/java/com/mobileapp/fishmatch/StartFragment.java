@@ -31,7 +31,8 @@ public class StartFragment extends Fragment {
             "Match Me to the Moon,\nAnd Let Me Fish Among the Stars",
             "I Think We've Been Waiting Long Enough,\nIt's Matching Time",
             "About Time You Showed Up, Let's Match Some Fish",
-            "We've Been Waiting For You, It's Time to Match"
+            "We've Been Waiting For You, It's Time to Match",
+            "Let's Dive In!"
             );
 
     private final Random rng = new Random();
