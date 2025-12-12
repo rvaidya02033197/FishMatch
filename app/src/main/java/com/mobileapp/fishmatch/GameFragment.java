@@ -14,6 +14,7 @@ import com.mobileapp.fishmatch.databinding.FragmentGameBinding;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -48,6 +49,21 @@ public class GameFragment extends Fragment {
             R.drawable.sturgeon,
             R.drawable.trout,
             R.drawable.tuna
+    ));
+
+    private final Vector<Integer> tileBackImages = new Vector<>(Arrays.asList(
+            R.drawable.tile_sea_blue,
+            R.drawable.tile_fire_coral,
+            R.drawable.tile_seaweed,
+            R.drawable.tile_ocean_depth,
+            R.drawable.tile_snail_shell,
+            R.drawable.standard_kelp_weave_tile,
+            R.drawable.tile_starfish,
+            R.drawable.tile_crown,
+            R.drawable.tile_sunset,
+            R.drawable.stained_glass_kelp_weave_tile,
+            R.drawable.dreams_of_a_greater_ocean,
+            R.drawable.tile_fishy_tile
     ));
 
     // game manager
@@ -96,6 +112,9 @@ public class GameFragment extends Fragment {
         // determine fish placement and add listeners
         initFish(tiles.size());
 
+        // Affirm tile back is one of intended tile back images
+        gameStartTileBackHelper(settingsPrefs);
+
         // apply the tile backs manually
         applyTileBacks();
 
@@ -108,6 +127,29 @@ public class GameFragment extends Fragment {
         });
 
         return view;
+    }
+
+    // Function to assure that tile back is part of catalog before being put to screen
+    public void gameStartTileBackHelper(SharedPreferences settingsPrefs) {
+        // Get tile back from shared preferences
+        int checkTile = settingsPrefs.getInt("tile_back", R.drawable.tile_sea_blue);
+        boolean inList = false;
+
+        SharedPreferences.Editor editor = settingsPrefs.edit();
+
+        // Check value recieved from share preferences is part of correct catalog
+        for (Integer tileBack : tileBackImages) {
+            if (checkTile == tileBack) {
+                inList = true;
+            }
+        }
+
+        // If not put default Sea Blue
+        if (!inList) {
+            editor.putInt("tile_back", R.drawable.tile_sea_blue);
+            game.tileBack = R.drawable.tile_sea_blue;
+            editor.apply();
+        }
     }
 
     /** choose two tiles at a time and give them the same fish image in their callback function **/
