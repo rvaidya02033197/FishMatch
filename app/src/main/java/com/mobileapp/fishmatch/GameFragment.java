@@ -222,6 +222,7 @@ public class GameFragment extends Fragment {
             public void onClick(View view) {
                 // if you can flip, then flip
                 if(!clockRunning) {
+                    // Start in game clock
                     baseTime = SystemClock.elapsedRealtime();
                     binding.gameTimer.setBase(baseTime);
                     binding.gameTimer.start();
@@ -241,7 +242,7 @@ public class GameFragment extends Fragment {
         }
     }
 
-    // Function currently just stops timer, later on will navigate to win screen
+    // Function stops timer, places values to shared preferences, pass args to win screen, navigates
     private void gameEnd() { // shared preferences (stats recorded)
         long gameLength = SystemClock.elapsedRealtime() - binding.gameTimer.getBase();
         binding.gameTimer.stop();
@@ -249,6 +250,7 @@ public class GameFragment extends Fragment {
         boolean movesHighScore = false;
         boolean timeHighScore = false;
 
+        // Set up Shared Preferences
         SharedPreferences prefs = requireActivity().getSharedPreferences("FishMatchStats", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         SharedPreferences settingsPrefs = requireActivity().getSharedPreferences("FishMatchSettings", Context.MODE_PRIVATE);
@@ -299,6 +301,7 @@ public class GameFragment extends Fragment {
         // commit changes asynchronously
         editor.apply();
         settingsEditor.apply();
+        // Set up action id pass all needed args to win fragment for display
         GameFragmentDirections.ActionGameFragmentToWinFragment action =
                 GameFragmentDirections.actionGameFragmentToWinFragment(
                         gameLength, totalTurns, game.userPoints(), timeHighScore, movesHighScore);

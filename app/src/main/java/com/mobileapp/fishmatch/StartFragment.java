@@ -47,6 +47,7 @@ public class StartFragment extends Fragment {
         // set the difficulty "easy" to be selected by default initially
         binding.easyDifficulty.setChecked(true);
 
+        // Set a random start quip to screen
         binding.startScreenQuip.setText(startQuips.get(this.randomIndex(startQuips.size())));
 
         // set the play button callback function

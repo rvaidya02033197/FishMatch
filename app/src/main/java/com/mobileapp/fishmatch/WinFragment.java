@@ -87,6 +87,8 @@ public class WinFragment extends Fragment {
         int pointsEarned = WinFragmentArgs.fromBundle(getArguments()).getPointsEarned();
         timeTaken = TimeUnit.MILLISECONDS.toSeconds(timeTaken);
 
+        // Conditions to determine if a regular quip or a high score quip is needed
+        // Red high score stamps set to invisible if theres no high score
         if (!WinFragmentArgs.fromBundle(getArguments()).getTimeHighScore()) {
             binding.timeHighScoreImage.setAlpha(0f);
             highScore = false;
@@ -95,16 +97,17 @@ public class WinFragment extends Fragment {
             binding.movesHighScoreImage.setAlpha(0f);
             highScore = false;
         }
+        // Set intended congrats message
         if (highScore) {
             binding.winQuipText.setText(gameHighScoreCongrats.get(this.randomIndex(gameHighScoreCongrats.size())));
         } else {
             binding.winQuipText.setText(gameCongrats.get(this.randomIndex(gameCongrats.size())));
         }
 
+        // Set game stats messages to screen
         binding.timeStats.setText(String.format("%s %ds", timeTakenString, timeTaken));
         binding.moveStats.setText(String.format("%s %d", movesMadeString, turnsTaken));
         binding.pointsEarned.setText(String.format("%s %d", pointsEarnedString, pointsEarned));
-
 
         binding.backToStartButton.setOnClickListener(new View.OnClickListener() {
             @Override

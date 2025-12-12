@@ -9,11 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.View;
-
 public class FishMatch {
     /*************************************
      *   PRIVATE MEMBER VARIABLES
@@ -124,6 +119,7 @@ public class FishMatch {
         String name = tile.getResources().getResourceEntryName(fishImage);
         Log.d("Gameplay", "Flipped a tile with the image: " + name);
 
+        // Animate turn over for flip effect
         tile.animate().rotationY(90).setDuration(100 / this.speed).withEndAction(() -> {
 
             tile.setBackgroundResource(fishImage);
@@ -131,15 +127,26 @@ public class FishMatch {
             tile.setRotationY(-90);
             tile.animate().rotationY(0).setDuration(300 / this.speed);
         });
+
+        // has a tile been flipped already?
         if (fish1.isEmpty()) {
             fish1 = name;
             tile1 = tile;
+            // register the flip
             this.flips++;
-        } else if (fish2.isEmpty() && tile1 != tile) {
+            Log.d("Gameplay", "Flips: " + this.flips);
+        } else if (fish2.isEmpty() && tile1 != tile) {  // is string empty and not the same tile as first flip?
+            // set second fish
             fish2 = name;
             tile2 = tile;
+            // register the flip
             this.flips++;
             compare();
+        } else if (tile1 == tile) {
+            // ignore
+        } else {
+            // you shouldn't end up here, something is very wrong
+            Log.d("Error", "Game handler has " + fish1 + " and " + fish2 + ", undefined behavior");
         }
     }
 
@@ -193,6 +200,7 @@ public class FishMatch {
             checkWin();
             Log.d("Gameplay", "You win!");
         } else {
+            // Listener message passing to display congrats on correct matchings
             if (messageListener != null) {
                 messageListener.onMessage(matchCongrats.get(this.randomIndex(matchCongrats.size())));
             }
@@ -216,7 +224,7 @@ public class FishMatch {
         tile1 = null;
         tile2 = null;
 
-        // release "lock"
+        // release flipping "lock"
         canFlip = true;
     }
     private void animateFlipBack(View tile) {
