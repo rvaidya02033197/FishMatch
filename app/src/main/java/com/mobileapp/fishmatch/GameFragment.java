@@ -298,8 +298,6 @@ public class GameFragment extends Fragment {
         SharedPreferences settingsPrefs = requireActivity().getSharedPreferences("FishMatchSettings", Context.MODE_PRIVATE);
         SharedPreferences.Editor settingsEditor = settingsPrefs.edit();
 
-
-
         // determine difficulty and use difficulty prefix to index and update correct stats
         String diffString;
         if (game.difficulty == 1) {
