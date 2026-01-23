@@ -1,12 +1,13 @@
 package com.mobileapp.fishmatch;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.mobileapp.fishmatch.databinding.FragmentStatsBinding;
 
@@ -17,12 +18,12 @@ public class StatsFragment extends Fragment {
     private FragmentStatsBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // initialize view binding, inflate layout
         binding = FragmentStatsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        SharedPreferences prefs = requireActivity().getSharedPreferences("FishMatchStats", Context.MODE_PRIVATE);
+        Stats stats = StatsController.load(requireContext());
 
         // reset stats button callback
         binding.resetStatsButton.setOnClickListener(new View.OnClickListener() {
@@ -35,140 +36,64 @@ public class StatsFragment extends Fragment {
                     binding.resetStatsButton.setText(R.string.reset_stats_confirm);
                     safe = false;
                 } else {
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.clear();
-                    editor.apply();
-                    binding.resetStatsButton.setText(R.string.reset_stats);
-                    safe = true;
-                    loadStats(prefs);
+                    // reset stats
+                    StatsController.clear(requireContext());
+                    binding.resetStatsButton.setText("Please Refresh This Page");
+                    loadStats(stats);
                 }
             }});
 
-        // run loading procedure
-        loadStats(prefs);
+        // update the text fields
+        loadStats(stats);
 
         return view;
     }
 
-    // todo refactor all of this loadStats() process to use helper functions and minimize redundant code
-    private void loadStats(SharedPreferences prefs)  {
+    private void loadStats(Stats stats)  {
         // retrieve stats
-        int easyGamesPlayed = prefs.getInt("easy_games_played", 0);
-        int mediumGamesPlayed = prefs.getInt("medium_games_played", 0);
-        int hardGamesPlayed = prefs.getInt("hard_games_played", 0);
-        long easyFastestTime = prefs.getLong("easy_fastest_time", Long.MAX_VALUE);
-        long mediumFastestTime = prefs.getLong("medium_fastest_time", Long.MAX_VALUE);
-        long hardFastestTime = prefs.getLong("hard_fastest_time", Long.MAX_VALUE);
-        int easyPointsScored = prefs.getInt("easy_points_scored", 0);
-        int mediumPointsScored = prefs.getInt("medium_points_scored", 0);
-        int hardPointsScored = prefs.getInt("hard_points_scored", 0);
-        int easyLeastFlips = prefs.getInt("easy_least_flips", Integer.MAX_VALUE);
-        int mediumLeastFlips = prefs.getInt("medium_least_flips", Integer.MAX_VALUE);
-        int hardLeastFlips = prefs.getInt("hard_least_flips", Integer.MAX_VALUE);
-
-        // calculate totals across all modes
-        // games played
-        int totalGamesPlayed = easyGamesPlayed + mediumGamesPlayed + hardGamesPlayed;
-        // fastest time
-        long totalFastestTime;
-        if (easyFastestTime < mediumFastestTime) {
-            if (easyFastestTime < hardFastestTime) {
-                totalFastestTime = easyFastestTime;
-            } else {
-                totalFastestTime = hardFastestTime;
-            }
-        } else {
-            if (mediumFastestTime < hardFastestTime) {
-                totalFastestTime = mediumFastestTime;
-            } else {
-                totalFastestTime = hardFastestTime;
-            }
-        }
-        // total points
-        int totalPointsScored = easyPointsScored + mediumPointsScored + hardPointsScored;
-        // least flips
-        int totalLeastFlips;
-        if (easyLeastFlips < mediumLeastFlips) {
-            if (easyLeastFlips < hardLeastFlips) {
-                totalLeastFlips = easyLeastFlips;
-            } else {
-                totalLeastFlips = hardLeastFlips;
-            }
-        } else {
-            if (mediumLeastFlips < hardLeastFlips) {
-                totalLeastFlips = mediumLeastFlips;
-            } else {
-                totalLeastFlips = hardLeastFlips;
-            }
-        }
+        DifficultyStats easy = stats.easy;
+        DifficultyStats medium = stats.medium;
+        DifficultyStats hard = stats.hard;
+        DifficultyStats total = StatsController.total(stats);
 
         // set games played
-        binding.easyGamesPlayedText.setText("Games Played: " + easyGamesPlayed);
-        binding.mediumGamesPlayedText.setText("Games Played: " + mediumGamesPlayed);
-        binding.hardGamesPlayedText.setText("Games Played: " + hardGamesPlayed);
-        binding.totalGamesPlayedText.setText("Games Played: " + totalGamesPlayed);
+        binding.easyGamesPlayedText.setText("Games Played: " + easy.gamesPlayed);
+        binding.mediumGamesPlayedText.setText("Games Played: " + medium.gamesPlayed);
+        binding.hardGamesPlayedText.setText("Games Played: " + hard.gamesPlayed);
+        binding.totalGamesPlayedText.setText("Games Played: " + total.gamesPlayed);
 
-        // set fastest times
-        // easy
-        if (easyFastestTime == Long.MAX_VALUE) {
-            binding.easyFastestTimeText.setText("Fastest Time: ---");
-        } else {
-            long seconds = TimeUnit.MILLISECONDS.toSeconds(easyFastestTime);
-            binding.easyFastestTimeText.setText("Fastest Time: " + seconds + "s");
-        }
-        // medium
-        if (mediumFastestTime == Long.MAX_VALUE) {
-            binding.mediumFastestTimeText.setText("Fastest Time: ---");
-        } else {
-            long seconds = TimeUnit.MILLISECONDS.toSeconds(mediumFastestTime);
-            binding.mediumFastestTimeText.setText("Fastest Time: " + seconds + "s");
-        }
-        // hard
-        if (hardFastestTime == Long.MAX_VALUE) {
-            binding.hardFastestTimeText.setText("Fastest Time: ---");
-        } else {
-            long seconds = TimeUnit.MILLISECONDS.toSeconds(hardFastestTime);
-            binding.hardFastestTimeText.setText("Fastest Time: " + seconds + "s");
-        }
-        // total
-        if (totalFastestTime == Long.MAX_VALUE) {
-            binding.totalFastestTimeText.setText("Fastest Time: ---");
-        } else {
-            long seconds = TimeUnit.MILLISECONDS.toSeconds(totalFastestTime);
-            binding.totalFastestTimeText.setText("Fastest Time: " + seconds + "s");
-        }
+        // Fastest times
+        setTime(binding.easyFastestTimeText, easy.fastestTime);
+        setTime(binding.mediumFastestTimeText, medium.fastestTime);
+        setTime(binding.hardFastestTimeText, hard.fastestTime);
+        setTime(binding.totalFastestTimeText, total.fastestTime);
 
-        // set points scored
-        binding.easyPointsScoredText.setText("Points Scored: " + easyPointsScored);
-        binding.mediumPointsScoredText.setText("Points Scored: " + mediumPointsScored);
-        binding.hardPointsScoredText.setText("Points Scored: " + hardPointsScored);
-        binding.totalPointsScoredText.setText("Points Scored: " + totalPointsScored);
+        // Points scored
+        binding.easyPointsScoredText.setText("Points Scored: " + easy.pointsScored);
+        binding.mediumPointsScoredText.setText("Points Scored: " + medium.pointsScored);
+        binding.hardPointsScoredText.setText("Points Scored: " + hard.pointsScored);
+        binding.totalPointsScoredText.setText("Points Scored: " + total.pointsScored);
 
-        // set least flips
-        // easy
-        if (easyLeastFlips == Integer.MAX_VALUE) {
-            binding.easyLeastFlipsText.setText("Shortest Win: ---");
+        // Least flips
+        setFlips(binding.easyLeastFlipsText, easy.leastFlips);
+        setFlips(binding.mediumLeastFlipsText, medium.leastFlips);
+        setFlips(binding.hardLeastFlipsText, hard.leastFlips);
+        setFlips(binding.totalLeastFlipsText, total.leastFlips);
+    }
+    private void setTime(TextView tv, long time) {
+        if (time == Long.MAX_VALUE) {
+            tv.setText("Fastest Time: ---");
         } else {
-            binding.easyLeastFlipsText.setText("Shortest Win: " + easyLeastFlips + " Turns");
+            long seconds = TimeUnit.MILLISECONDS.toSeconds(time);
+            tv.setText("Fastest Time: " + seconds + "s");
         }
-        // medium
-        if (mediumLeastFlips == Integer.MAX_VALUE) {
-            binding.mediumLeastFlipsText.setText("Shortest Win: ---");
-        } else {
-            binding.mediumLeastFlipsText.setText("Shortest Win: " + mediumLeastFlips + " Turns");
-        }
-        // hard
-        if (hardLeastFlips == Integer.MAX_VALUE) {
-            binding.hardLeastFlipsText.setText("Shortest Win: ---");
-        } else {
-            binding.hardLeastFlipsText.setText("Shortest Win: " + hardLeastFlips + " Turns");
-        }
-        // total
-        if (totalLeastFlips == Integer.MAX_VALUE) {
-            binding.totalLeastFlipsText.setText("Shortest Win: ---");
-        } else {
-            binding.totalLeastFlipsText.setText("Shortest Win: " + totalLeastFlips + " flips");
-        }
+    }
 
+    private void setFlips(TextView tv, int flips) {
+        if (flips == Integer.MAX_VALUE) {
+            tv.setText("Shortest Win: ---");
+        } else {
+            tv.setText("Shortest Win: " + flips + " Turns");
+        }
     }
 }

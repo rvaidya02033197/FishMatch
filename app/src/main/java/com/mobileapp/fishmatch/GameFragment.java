@@ -292,39 +292,41 @@ public class GameFragment extends Fragment {
         boolean movesHighScore = false;
         boolean timeHighScore = false;
 
-        // Set up Shared Preferences
-        SharedPreferences prefs = requireActivity().getSharedPreferences("FishMatchStats", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
+        // settings shared preferences
         SharedPreferences settingsPrefs = requireActivity().getSharedPreferences("FishMatchSettings", Context.MODE_PRIVATE);
         SharedPreferences.Editor settingsEditor = settingsPrefs.edit();
+
+        // load stats from shared preferences
+        Stats stats = StatsController.load(requireContext());
+        DifficultyStats current = null;
 
         // determine difficulty and use difficulty prefix to index and update correct stats
         String diffString;
         if (game.difficulty == 1) {
+            current = stats.easy;
             diffString = "easy_";
         } else if (game.difficulty == 2) {
+            current = stats.medium;
             diffString = "medium_";
         } else if (game.difficulty == 3) {
+            current = stats.hard;
             diffString = "hard_";
         } else {
-            Log.d("Gameplay", "Invalid difficulty ("+ game.difficulty +"), storing with 'null_' prefix");
+            Log.d("Gameplay", "Invalid difficulty ("+ game.difficulty +")");
             diffString = "null_";
         }
 
         // update games played in the difficulty
-        int currentGamesPlayed = prefs.getInt(diffString + "games_played", 0);
-        editor.putInt(diffString + "games_played", currentGamesPlayed + 1);
+        current.gamesPlayed++;
 
         // check if new fastest time, update if so
-        long currentFastestTime = prefs.getLong(diffString + "fastest_time", Long.MAX_VALUE);
-        if (gameLength < currentFastestTime) {
+        if (gameLength < current.fastestTime) {
             timeHighScore = true;
-            editor.putLong(diffString + "fastest_time", gameLength);
+            current.fastestTime = gameLength;
         }
 
         // update total points earned in the difficulty
-        int currentPointsEarned = prefs.getInt(diffString + "points_scored", 0);
-        editor.putInt(diffString + "points_scored", currentPointsEarned + game.userPoints());
+        current.pointsScored = current.pointsScored + game.userPoints();
 
         // update total points for user to spend
         int pointTotal = settingsPrefs.getInt("point_total", 0);
@@ -332,14 +334,15 @@ public class GameFragment extends Fragment {
 
         // check if new least amount of flips for this mode, update if so
         int totalTurns = game.flips / 2;
-        int currentFlips = prefs.getInt(diffString + "least_flips", Integer.MAX_VALUE);
-        if (totalTurns < currentFlips) {
+        if (totalTurns < current.leastFlips) {
             movesHighScore = true;
-            editor.putInt(diffString + "least_flips", totalTurns);
+            current.leastFlips = totalTurns;
         }
 
+        // apply stats changes using controller
+        StatsController.save(requireContext(), stats);
+
         // commit changes asynchronously
-        editor.apply();
         settingsEditor.apply();
         // Set up action id pass all needed args to win fragment for display
         GameFragmentDirections.ActionGameFragmentToWinFragment action =
