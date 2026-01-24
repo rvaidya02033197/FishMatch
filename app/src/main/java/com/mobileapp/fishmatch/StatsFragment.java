@@ -1,5 +1,6 @@
 package com.mobileapp.fishmatch;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -41,7 +42,22 @@ public class StatsFragment extends Fragment {
                     binding.resetStatsButton.setText("Please Refresh This Page");
                     loadStats(stats);
                 }
-            }});
+            }
+        });
+
+        // share stats button callback
+        binding.shareButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // implementation from: https://www.youtube.com/watch?v=qbtlrGHOVjg
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT, StatsController.export(stats));
+                intent.setType("text/plain");
+
+                if (intent.resolveActivity(requireContext().getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
 
         // update the text fields
         loadStats(stats);

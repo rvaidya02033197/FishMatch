@@ -3,6 +3,8 @@ package com.mobileapp.fishmatch;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.concurrent.TimeUnit;
+
 public class StatsController {
     // const key to access the shared preferences object
     private static final String PREFS_NAME = "FishMatchStats";
@@ -35,6 +37,29 @@ public class StatsController {
         saveDifficulty(editor, "hard_", stats.hard);
 
         editor.apply();
+    }
+
+    // given a Stats object, format a string to be sent as text to an external recipient
+    public static String export(Stats stats) {
+        String output = "\uD83D\uDC1F My FishMatch Stats! \uD83D\uDC1F\n" +
+                "====================\n";
+
+        output += formatStats(stats.easy, "\uD83D\uDFE2 Easy \uD83D\uDFE2");
+        output += formatStats(stats.medium, "\uD83D\uDFE1 Medium \uD83D\uDFE1");
+        output += formatStats(stats.hard, "\uD83D\uDD34 Hard \uD83D\uDD34");
+        output += formatStats(total(stats), "\uD83C\uDFA3 Total \uD83C\uDFA3");
+
+        return output;
+    }
+
+    // given a DiffStats object and a header string, construct a breakdown of stats to be part of the final message
+    private static String formatStats(DifficultyStats ds, String header) {
+        String result = header + "\n" +
+                "    Games Played: " + ds.gamesPlayed + "\n" +
+                "    Fastest Time: " + (ds.fastestTime == Long.MAX_VALUE ? "N/A" : TimeUnit.MILLISECONDS.toSeconds(ds.fastestTime) + "s") + "\n" +
+                "    Points Scored: " + ds.pointsScored + "\n" +
+                "    Least Turns: " + (ds.leastFlips == Integer.MAX_VALUE ? "N/A" : ds.leastFlips) + "\n";
+        return result;
     }
 
     // return a DifficultyStats object containing the notable stats considering all difficulties
