@@ -61,7 +61,7 @@
         android:layout_height="72dp"
         android:background="@drawable/stripes"
         android:importantForAccessibility="no"
-        app:layout_constraintBottom_toTopOf="@+id/tile_12"
+        app:layout_constraintBottom_toTopOf="@+id/tile_8"
         app:layout_constraintEnd_toStartOf="@+id/tile_5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,11 +104,11 @@
         android:layout_height="72dp"
         android:background="@drawable/stripes"
         android:importantForAccessibility="no"
-        app:layout_constraintBottom_toTopOf="@+id/tile_16"
+        app:layout_constraintBottom_toTopOf="@+id/tile_12"
         app:layout_constraintEnd_toStartOf="@+id/tile_9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tile_12" />
+        app:layout_constraintTop_toBottomOf="@+id/tile_4" />
 
     <ImageButton
         android:id="@+id/tile_9"
@@ -146,11 +146,11 @@
         android:layout_height="72dp"
         android:background="@drawable/stripes"
         android:importantForAccessibility="no"
-        app:layout_constraintBottom_toTopOf="@+id/tile_8"
+        app:layout_constraintBottom_toTopOf="@+id/tile_16"
         app:layout_constraintEnd_toStartOf="@+id/tile_13"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tile_4" />
+        app:layout_constraintTop_toBottomOf="@+id/tile_8" />
 
     <ImageButton
         android:id="@+id/tile_13"
@@ -194,7 +194,7 @@
         app:layout_constraintEnd_toStartOf="@+id/tile_17"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tile_8" />
+        app:layout_constraintTop_toBottomOf="@+id/tile_12" />
 
     <ImageButton
         android:id="@+id/tile_17"
@@ -227,7 +227,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tile_18"
-        app:layout_constraintTop_toTopOf="@+id/tile_17" />
+        app:layout_constraintTop_toTopOf="@+id/tile_18" />
 
     <ImageButton
         android:id="@+id/tile_20"

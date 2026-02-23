@@ -1,6 +1,7 @@
 package com.mobileapp.fishmatch;
 
 import android.content.res.Configuration;
+import android.media.Image;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -34,6 +35,8 @@ public class GameFragment extends Fragment {
 
     // base time for clock
     private long baseTime = 0;
+
+    private long offset = 0;
 
     // const fish image array
     private final Vector<Integer> fishImages = new Vector<>(Arrays.asList(
@@ -75,6 +78,8 @@ public class GameFragment extends Fragment {
 
     private  View view;
 
+    public GameStateHelper gameState;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // initialize view binding, inflate layout
@@ -82,6 +87,10 @@ public class GameFragment extends Fragment {
         view = binding.getRoot();
 
         game = new FishMatch();
+
+        //initialize gameStateHelper and give to FishMatch object
+        gameState = new GameStateHelper();
+        game.gameState = gameState;
 
         if (!gameInProgress) {
             gameInProgress = true;
@@ -119,8 +128,22 @@ public class GameFragment extends Fragment {
         // add ImageButtons to array for easier referencing, tiles[i] = tile_i
         initButtonVector();
 
-        // determine fish placement and add listeners
-        initFish(tiles.size());
+        // Setting up game(clock, tiles, fish) after rotation
+        if (savedInstanceState != null) {
+            if (savedInstanceState.getBoolean("InProgress")) {
+                gameState = (GameStateHelper) savedInstanceState.getSerializable("GAME_STATUS");
+                setUpMidGame(gameState);
+                game.gameState = gameState;
+
+                baseTime = savedInstanceState.getLong("CLOCK_BASE", SystemClock.elapsedRealtime());
+
+                binding.gameTimer.setBase(baseTime);
+                binding.gameTimer.start();
+            }
+        } else {
+            // determine fish placement and add listeners
+            initFish(tiles.size());
+        }
 
         // Affirm tile back is one of intended tile back images
         gameStartTileBackHelper(settingsPrefs);
@@ -201,6 +224,9 @@ public class GameFragment extends Fragment {
             int t1 = game.randomIndex(tilesCopy.size());
             setTileBehavior(tilesCopy.get(t1), fishImagesCopy.get(fishIndex));
 
+            // put correct tile to fish assignment into gameState
+            gameState.fishToTile.put(fishImagesCopy.get(fishIndex), tilesCopy.get(t1).getId());
+
             // pop tile
             tilesCopy.remove(t1);
 
@@ -208,6 +234,9 @@ public class GameFragment extends Fragment {
             int t2 = game.randomIndex(tilesCopy.size());
             setTileBehavior(tilesCopy.get(t2), fishImagesCopy.get(fishIndex));
 
+            //put correct tile matching into gameState and update status
+            gameState.tileToMatchingTile.put(gameState.fishToTile.get(fishImagesCopy.get(fishIndex)), tilesCopy.get(t2).getId());
+            gameState.fishToTileState.put(fishImagesCopy.get(fishIndex), true);
             // pop tile
             tilesCopy.remove(t2);
 
@@ -294,7 +323,7 @@ public class GameFragment extends Fragment {
                 // if you can flip, then flip
                 if(!clockRunning) {
                     // Start in game clock
-                    baseTime = SystemClock.elapsedRealtime();
+                    baseTime = SystemClock.elapsedRealtime() - offset;
                     binding.gameTimer.setBase(baseTime);
                     binding.gameTimer.start();
                     clockRunning = true;
@@ -379,5 +408,52 @@ public class GameFragment extends Fragment {
                 GameFragmentDirections.actionGameFragmentToWinFragment(
                         gameLength, totalTurns, game.userPoints(), timeHighScore, movesHighScore);
         Navigation.findNavController(view).navigate(action);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        Log.d("LifecycleLog", "onSavedInstanceState called");
+        super.onSaveInstanceState(outState);
+
+        if (gameInProgress) {
+            // Give bundle current game state and clock information
+            outState.putBoolean("InProgress", true);
+            outState.putSerializable("GAME_STATUS", gameState);
+
+            offset = SystemClock.elapsedRealtime() - binding.gameTimer.getBase();
+
+            outState.putLong("CLOCK_OFFSET", offset);
+            outState.putLong("CLOCK_BASE", binding.gameTimer.getBase());
+        } else {
+            outState.putBoolean("InProgress", false);
+        }
+    }
+
+    public void setUpMidGame(GameStateHelper gameInfo) {
+        Log.d("LifecycleLog", "midGameSetup called");
+
+        gameInfo.fishToTileState.forEach((fish, state) -> {
+            // Fetch tile bindings to set up behavior and reassign fish properly
+            ImageButton tile1 = binding.getRoot().findViewById(gameInfo.fishToTile.get(fish));
+            ImageButton tile2 = binding.getRoot().findViewById(gameInfo.tileToMatchingTile.get(tile1.getId()));
+            if (state) {
+                setTileBehavior(tile1, fish);
+                setTileBehavior(tile2, fish);
+            } else {
+                // disable tiles that have already been matched
+                tile1.setEnabled(false);
+                tile2.setEnabled(false);
+
+                // make them invisible
+                tile1.animate().alpha(0);
+                tile2.animate().alpha(0);
+            }
+            // In case user rotates phone with a flipped tile
+            if (gameInfo.isThereFlippedTile) {
+                ImageButton flippedTile = binding.getRoot().findViewById(gameInfo.flippedTile);
+                game.flip(flippedTile, gameInfo.flippedFish);
+            }
+        });
+
     }
 }

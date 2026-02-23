@@ -77,9 +77,18 @@ public class FishMatch {
     // constant tile background
     public int tileBack = R.drawable.tile_sea_blue;
 
+    public GameStateHelper gameState;
+
     /*************************************
      *   PUBLIC METHODS
      ************************************/
+
+    public int totalTilesInGame() {
+        if (difficulty > 0) {
+            return (difficulty + 3) * 4;
+        }
+        return 0;
+    }
 
     public interface GameMessageListener {
         void onMessage(String text);
@@ -135,6 +144,10 @@ public class FishMatch {
             tile1 = tile;
             // register the flip
             this.flips++;
+            // set helpers for flipped fish
+            gameState.isThereFlippedTile = true;
+            gameState.flippedFish = fishImage;
+            gameState.flippedTile = tile.getId();
             Log.d("Gameplay", "Flips: " + this.flips);
         } else if (fish2.isEmpty() && tile1 != tile) {  // is string empty and not the same tile as first flip?
             // set second fish
@@ -142,7 +155,7 @@ public class FishMatch {
             tile2 = tile;
             // register the flip
             this.flips++;
-            compare();
+            compare(fishImage);
         } else if (tile1 == tile) {
             // ignore
         } else {
@@ -165,15 +178,17 @@ public class FishMatch {
      ************************************/
 
     /** once two fish are revealed, performs comparison and determines next step **/
-    private void compare() {
+    private void compare(Integer fishImage) {
         /* canFlip functions similar to a mutex lock, prevents any more than
         two tiles from being flipped during the delay in tile2.postDelayed() */
         canFlip = false;
         Log.d("Gameplay", "Comparing " + fish1 + " and " + fish2);
 
+        // Reset boolean for game state
+        gameState.isThereFlippedTile = false;
         if (fish1.equals(fish2)) {
             // match the two tiles, force a delay before proceeding to allow user to see both tiles
-            tile2.postDelayed(() -> match(), msDelay);
+            tile2.postDelayed(() -> match(fishImage), msDelay);
         } else {
             // reset tiles, force a delay to allow user to see both tiles
             tile2.postDelayed(() -> clear(false), msDelay);   // match() will also call clear(), but with 'true' argument
@@ -181,7 +196,7 @@ public class FishMatch {
     }
 
     /** increase player's score and remove the tiles from play, then clear references **/
-    private void match() {
+    private void match(Integer fishImage) {
         // increase score
         userScore += 2;
 
@@ -192,6 +207,9 @@ public class FishMatch {
         // scale up (grow) and fade out
         tile1.animate().scaleX(1.2f).scaleY(1.2f).alpha(0).setDuration(msFadeOut);
         tile2.animate().scaleX(1.2f).scaleY(1.2f).alpha(0).setDuration(msFadeOut);
+
+        // Update state for game state post match
+        gameState.fishToTileState.put(fishImage, false);
 
         // remove internal references to tiles
         clear(true);
