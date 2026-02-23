@@ -2,9 +2,11 @@ package com.mobileapp.fishmatch;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,8 @@ public class SettingsFragment extends Fragment {
         // get shared preference
         SharedPreferences prefs = requireActivity().getSharedPreferences("FishMatchSettings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
+
+        int orientation = getResources().getConfiguration().orientation;
 
         // display current preferred speed
         int gameSpeed = prefs.getInt("game_speed", 1);
@@ -50,6 +54,25 @@ public class SettingsFragment extends Fragment {
             }
             editor.apply();
         });
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            binding.playMenuButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_settingsFragment_to_startFragment);
+                }
+            });
+
+            binding.statsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_settingsFragment_to_statsFragment);
+                }
+            });
+        }
 
         /** disable radio buttons for locked items **/
         // sea blue

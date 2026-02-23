@@ -1,5 +1,6 @@
 package com.mobileapp.fishmatch;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -27,6 +28,9 @@ public class GameFragment extends Fragment {
 
     // clock status flag
     private boolean clockRunning = false;
+
+    // for rotation life cycle
+    private boolean gameInProgress = false;
 
     // base time for clock
     private long baseTime = 0;
@@ -79,8 +83,14 @@ public class GameFragment extends Fragment {
 
         game = new FishMatch();
 
+        if (!gameInProgress) {
+            gameInProgress = true;
+        }
+
         // set difficulty internally
         game.difficulty = GameFragmentArgs.fromBundle(getArguments()).getDifficulty();
+
+        int orientation = getResources().getConfiguration().orientation;
 
         // get settings preferences
         SharedPreferences settingsPrefs = requireActivity().getSharedPreferences("FishMatchSettings", Context.MODE_PRIVATE);
@@ -125,6 +135,25 @@ public class GameFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_gameFragment_to_startFragment);
             }
         });
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            binding.statsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_gameFragment_to_statsFragment);
+                }
+            });
+
+            binding.settingsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_gameFragment_to_settingsFragment);
+                }
+            });
+        }
 
         return view;
     }
@@ -288,6 +317,7 @@ public class GameFragment extends Fragment {
     private void gameEnd() { // shared preferences (stats recorded)
         long gameLength = SystemClock.elapsedRealtime() - binding.gameTimer.getBase();
         binding.gameTimer.stop();
+        gameInProgress = false;
 
         boolean movesHighScore = false;
         boolean timeHighScore = false;

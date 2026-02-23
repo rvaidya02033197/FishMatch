@@ -1,5 +1,6 @@
 package com.mobileapp.fishmatch;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -87,6 +88,8 @@ public class WinFragment extends Fragment {
         int pointsEarned = WinFragmentArgs.fromBundle(getArguments()).getPointsEarned();
         timeTaken = TimeUnit.MILLISECONDS.toSeconds(timeTaken);
 
+        int orientation = getResources().getConfiguration().orientation;
+
         // Conditions to determine if a regular quip or a high score quip is needed
         // Red high score stamps set to invisible if theres no high score
         if (!WinFragmentArgs.fromBundle(getArguments()).getTimeHighScore()) {
@@ -116,6 +119,25 @@ public class WinFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_winFragment_to_startFragment);
             }
         });
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            binding.statsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_winFragment_to_statsFragment);
+                }
+            });
+
+            binding.settingsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_winFragment_to_settingsFragment);
+                }
+            });
+        }
 
         return view;
     }

@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_startFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -29,17 +35,37 @@
         <action
             android:id="@+id/action_gameFragment_to_startFragment"
             app:destination="@id/startFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.mobileapp.fishmatch.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
     <fragment
         android:id="@+id/statsFragment"
         android:name="com.mobileapp.fishmatch.StatsFragment"
         android:label="fragment_stats"
-        tools:layout="@layout/fragment_stats" />
+        tools:layout="@layout/fragment_stats" >
+        <action
+            android:id="@+id/action_statsFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+        <action
+            android:id="@+id/action_statsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/winFragment"
         android:name="com.mobileapp.fishmatch.WinFragment"
@@ -63,5 +89,11 @@
         <argument
             android:name="movesHighScore"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_winFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+        <action
+            android:id="@+id/action_winFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 </navigation>

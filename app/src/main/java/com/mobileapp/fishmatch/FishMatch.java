@@ -118,6 +118,7 @@ public class FishMatch {
         // determine name from image
         String name = tile.getResources().getResourceEntryName(fishImage);
         Log.d("Gameplay", "Flipped a tile with the image: " + name);
+        Log.d("Gameplay", "Flipped tile: " + tile);
 
         // Animate turn over for flip effect
         tile.animate().rotationY(90).setDuration(100 / this.speed).withEndAction(() -> {

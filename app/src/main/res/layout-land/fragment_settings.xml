@@ -1,0 +1,540 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/settings_background_color"
+    android:orientation="vertical"
+    tools:context=".SettingsFragment">
+
+    <TextView
+        android:id="@+id/settingsHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/menu_item_settings_title"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/settingGameSpeedHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_game_speed_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toEndOf="@id/statsButton"
+        app:layout_constraintTop_toBottomOf="@+id/settingsHeader" />
+
+    <RadioGroup
+        android:id="@+id/gameSpeedGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/settingGameSpeedHeader"
+        app:layout_constraintTop_toBottomOf="@+id/settingGameSpeedHeader">
+
+        <RadioButton
+            android:id="@+id/speed1x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/settings_game_speed_option_1x" />
+
+        <RadioButton
+            android:id="@+id/speed2x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/settings_game_speed_option_2x" />
+
+        <RadioButton
+            android:id="@+id/speed4x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/settings_game_speed_option_4x" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/settingsTileBacksHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/settings_tile_backs_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/settingGameSpeedHeader"
+        app:layout_constraintTop_toBottomOf="@+id/gameSpeedGroup" />
+
+    <TextView
+        android:id="@+id/pointTotalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shop_point_total"
+        app:layout_constraintBottom_toBottomOf="@+id/settingsTileBacksHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/settingsTileBacksHeader"
+        app:layout_constraintTop_toTopOf="@+id/settingsTileBacksHeader" />
+
+    <HorizontalScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/settingGameSpeedHeader"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTileBacksHeader"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iconTileSeaBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:src="@drawable/tile_sea_blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iconTileFireCoral"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/tile_fire_coral"
+                app:layout_constraintStart_toEndOf="@id/tileSeaBluePurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSeaBlue" />
+
+            <ImageView
+                android:id="@+id/iconTileFireCoral2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/tile_seaweed"
+                app:layout_constraintStart_toEndOf="@+id/tileFireCoralPurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileFireCoral" />
+
+            <ImageView
+                android:id="@+id/iconTileOceanDepth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/tile_ocean_depth"
+                app:layout_constraintStart_toEndOf="@+id/tileSeaweedPurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileFireCoral2" />
+
+            <ImageView
+                android:id="@+id/iconTileSnailShell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/tile_snail_shell"
+                app:layout_constraintStart_toEndOf="@+id/tileOceanDepthPurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileOceanDepth" />
+
+            <ImageView
+                android:id="@+id/iconTileKelpWeave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/standard_kelp_weave_tile"
+                app:layout_constraintStart_toEndOf="@+id/tileSnailShellPurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSnailShell" />
+
+            <ImageView
+                android:id="@+id/iconTileStarfish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/tile_starfish"
+                app:layout_constraintStart_toEndOf="@id/tileKelpWeavePurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileKelpWeave" />
+
+            <ImageView
+                android:id="@+id/iconTileCrown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/tile_crown"
+                app:layout_constraintStart_toEndOf="@id/tileStarfishPurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileStarfish" />
+
+            <ImageView
+                android:id="@+id/iconTileSunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/tile_sunset"
+                app:layout_constraintStart_toEndOf="@id/tileCrownPurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileCrown" />
+
+            <ImageView
+                android:id="@+id/iconTileSeaglassKelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/stained_glass_kelp_weave_tile"
+                app:layout_constraintStart_toEndOf="@id/tileSunsetPurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSunset" />
+
+            <ImageView
+                android:id="@+id/iconTileFishyTile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/tile_fishy_tile"
+                app:layout_constraintStart_toEndOf="@id/tileSeaGlassKelpButtonPurchase"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSeaglassKelp" />
+
+            <ImageView
+                android:id="@+id/iconJellyfishTile"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/dreams_of_a_greater_ocean"
+                app:layout_constraintStart_toEndOf="@id/tileFishyTilePurchaseButton"
+                app:layout_constraintTop_toTopOf="@+id/iconTileFishyTile" />
+
+            <RadioGroup
+                android:id="@+id/tileBackButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@+id/iconTileSeaBlue"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSeaBlue">
+
+                <RadioButton
+                    android:id="@+id/tileSeaBlueButton"
+                    android:layout_width="88dp"
+                    android:layout_height="128dp"
+                    android:text="@string/tile_back_sea_blue" />
+
+                <RadioButton
+                    android:id="@+id/tileFireCoralButton"
+                    android:layout_width="88dp"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="240dp"
+                    android:text="@string/tile_back_fire_coral" />
+
+                <RadioButton
+                    android:id="@+id/tileSeaweedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="260dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/tile_back_seaweed" />
+
+                <RadioButton
+                    android:id="@+id/tileOceanDepthButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="270dp"
+                    android:text="@string/tile_back_ocean_depth" />
+
+                <RadioButton
+                    android:id="@+id/tileSnailShellButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="280dp"
+                    android:text="@string/tile_back_snail_shell" />
+
+                <RadioButton
+                    android:id="@+id/tileKelpWeaveButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="295dp"
+                    android:text="@string/tile_back_kelp_weave" />
+
+                <RadioButton
+                    android:id="@+id/tileStarfishButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="285dp"
+                    android:text="@string/tile_back_starfish" />
+
+                <RadioButton
+                    android:id="@+id/tileCrownButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="275dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/tile_back_crown" />
+
+                <RadioButton
+                    android:id="@+id/tileSunsetButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="285dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/tile_back_sunset" />
+
+                <RadioButton
+                    android:id="@+id/tileSeaGlassKelpButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="285dp"
+                    android:text="@string/tile_back_sea_glass_kelp" />
+
+                <RadioButton
+                    android:id="@+id/tileFishyTileButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="270dp"
+                    android:text="@string/tile_back_fishy_tile" />
+
+                <RadioButton
+                    android:id="@+id/tileJellyfishTileButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="295dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/tile_back_jellyfish" />
+
+            </RadioGroup>
+
+
+            <Button
+                android:id="@+id/tileSeaBluePurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_sea_blue_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileSeaBlue"
+                app:layout_constraintStart_toEndOf="@+id/iconTileSeaBlue"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSeaBlue" />
+
+            <Button
+                android:id="@+id/tileFireCoralPurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_fire_coral_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileFireCoral"
+                app:layout_constraintStart_toEndOf="@+id/iconTileFireCoral"
+                app:layout_constraintTop_toTopOf="@+id/iconTileFireCoral" />
+
+            <Button
+                android:id="@+id/tileSeaweedPurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_seaweed_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileFireCoral2"
+                app:layout_constraintStart_toEndOf="@+id/iconTileFireCoral2"
+                app:layout_constraintTop_toTopOf="@+id/iconTileFireCoral2" />
+
+            <Button
+                android:id="@+id/tileOceanDepthPurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_ocean_depth_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileOceanDepth"
+                app:layout_constraintStart_toEndOf="@+id/iconTileOceanDepth"
+                app:layout_constraintTop_toTopOf="@+id/iconTileOceanDepth" />
+
+            <Button
+                android:id="@+id/tileSnailShellPurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_snail_shell_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileSnailShell"
+                app:layout_constraintStart_toEndOf="@+id/iconTileSnailShell"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSnailShell" />
+
+            <Button
+                android:id="@+id/tileKelpWeavePurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_kelp_weave_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileKelpWeave"
+                app:layout_constraintStart_toEndOf="@+id/iconTileKelpWeave"
+                app:layout_constraintTop_toTopOf="@+id/iconTileKelpWeave" />
+
+            <Button
+                android:id="@+id/tileStarfishPurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_starfish_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileStarfish"
+                app:layout_constraintStart_toEndOf="@+id/iconTileStarfish"
+                app:layout_constraintTop_toTopOf="@+id/iconTileStarfish" />
+
+            <Button
+                android:id="@+id/tileCrownPurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_crown_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileCrown"
+                app:layout_constraintStart_toEndOf="@+id/iconTileCrown"
+                app:layout_constraintTop_toTopOf="@+id/iconTileCrown" />
+
+            <Button
+                android:id="@+id/tileSunsetPurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_sunset_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileSunset"
+                app:layout_constraintStart_toEndOf="@+id/iconTileSunset"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSunset" />
+
+            <Button
+                android:id="@+id/tileSeaGlassKelpButtonPurchase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_sea_glass_kelp_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileSeaglassKelp"
+                app:layout_constraintStart_toEndOf="@+id/iconTileSeaglassKelp"
+                app:layout_constraintTop_toTopOf="@+id/iconTileSeaglassKelp" />
+
+            <Button
+                android:id="@+id/tileFishyTilePurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_fishy_tile_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconTileFishyTile"
+                app:layout_constraintStart_toEndOf="@+id/iconTileFishyTile"
+                app:layout_constraintTop_toTopOf="@+id/iconTileFishyTile" />
+
+            <Button
+                android:id="@+id/tileJellyfishTilePurchaseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tile_back_jellyfish_label"
+                app:layout_constraintBottom_toBottomOf="@+id/iconJellyfishTile"
+                app:layout_constraintStart_toEndOf="@+id/iconJellyfishTile"
+                app:layout_constraintTop_toTopOf="@+id/iconJellyfishTile" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
+    <ImageButton
+        android:id="@+id/statsButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/stats_icon_trophy"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <ImageButton
+        android:id="@+id/playMenuButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/game_icon"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/settings_icon"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"/>
+
+    <TextView
+        android:id="@+id/statsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_stats_title"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318"
+        />
+
+    <TextView
+        android:id="@+id/playText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_game_title"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.508"
+        />
+
+    <TextView
+        android:id="@+id/settingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_settings_title"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.708"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

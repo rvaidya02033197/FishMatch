@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/stats_background_color"
+    android:orientation="vertical"
+    tools:context=".StatsFragment">
+
+    <TextView
+        android:id="@+id/statsHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/menu_item_stats_title"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias=".5"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/easyConstraint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias=".15"
+            app:layout_constraintVertical_bias=".31">
+
+            <TextView
+                android:id="@+id/easyStatsHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/easy_header"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/easyGamesPlayedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/stats_gamesplayed"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/easyStatsHeader"
+                app:layout_constraintTop_toBottomOf="@+id/easyStatsHeader" />
+
+            <TextView
+                android:id="@+id/easyFastestTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_fastesttime"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/easyGamesPlayedText"
+                app:layout_constraintTop_toBottomOf="@+id/easyGamesPlayedText" />
+
+            <TextView
+                android:id="@+id/easyPointsScoredText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_pointsscored"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/easyFastestTimeText"
+                app:layout_constraintTop_toBottomOf="@+id/easyFastestTimeText" />
+
+            <TextView
+                android:id="@+id/easyLeastFlipsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_leastflips"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/easyFastestTimeText"
+                app:layout_constraintTop_toBottomOf="@+id/easyPointsScoredText" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mediumConstraint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/easyConstraint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias=".14"
+            app:layout_constraintVertical_bias=".26">
+
+            <TextView
+                android:id="@+id/mediumStatsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/medium_header"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0"/>
+
+            <TextView
+                android:id="@+id/mediumGamesPlayedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/stats_gamesplayed"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/mediumStatsHeader"
+                app:layout_constraintTop_toBottomOf="@+id/mediumStatsHeader" />
+
+            <TextView
+                android:id="@+id/mediumLeastFlipsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_leastflips"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/mediumStatsHeader"
+                app:layout_constraintTop_toBottomOf="@+id/mediumPointsScoredText" />
+
+            <TextView
+                android:id="@+id/mediumPointsScoredText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_pointsscored"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/mediumStatsHeader"
+                app:layout_constraintTop_toBottomOf="@+id/mediumFastestTimeText" />
+
+            <TextView
+                android:id="@+id/mediumFastestTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_fastesttime"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/mediumGamesPlayedText"
+                app:layout_constraintTop_toBottomOf="@+id/mediumGamesPlayedText" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/mediumConstraint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias=".45"
+            app:layout_constraintVertical_bias=".255">
+
+            <TextView
+                android:id="@+id/hardStatsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/hard_header"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0"/>
+
+            <TextView
+                android:id="@+id/hardGamesPlayedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/stats_gamesplayed"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/hardStatsHeader"
+                app:layout_constraintTop_toBottomOf="@+id/hardStatsHeader" />
+
+            <TextView
+                android:id="@+id/hardLeastFlipsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_leastflips"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/hardStatsHeader"
+                app:layout_constraintTop_toBottomOf="@+id/hardPointsScoredText" />
+
+            <TextView
+                android:id="@+id/hardPointsScoredText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_pointsscored"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/hardStatsHeader"
+                app:layout_constraintTop_toBottomOf="@+id/hardFastestTimeText" />
+
+            <TextView
+                android:id="@+id/hardFastestTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_fastesttime"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/hardGamesPlayedText"
+                app:layout_constraintTop_toBottomOf="@+id/hardGamesPlayedText" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/totalConstraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="30dp"
+            android:layout_marginStart="75dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias=".5"
+            app:layout_constraintVertical_bias="0.93">
+
+            <TextView
+                android:id="@+id/totalStatsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/total_header"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+            <TextView
+                android:id="@+id/totalGamesPlayedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/stats_gamesplayed"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalStatsHeader" />
+
+            <TextView
+                android:id="@+id/totalLeastFlipsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_leastflips"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/totalPointsScoredText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias=".99"
+                app:layout_constraintHorizontal_bias="0"/>
+
+            <TextView
+                android:id="@+id/totalPointsScoredText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_pointsscored"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias=".535"
+                app:layout_constraintHorizontal_bias=".45" />
+
+            <TextView
+                android:id="@+id/totalFastestTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats_fastesttime"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/totalGamesPlayedText"
+                app:layout_constraintTop_toBottomOf="@+id/totalGamesPlayedText" />
+
+            <Button
+                android:id="@+id/resetStatsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/stat_reset_button"
+                android:text="@string/reset_stats"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias=".81"
+                app:layout_constraintHorizontal_bias=".95" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ImageButton
+        android:id="@+id/shareButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        android:padding="12dp"
+        android:src="@drawable/share_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias=".05"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias=".95"/>
+
+    <ImageButton
+        android:id="@+id/statsButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/stats_icon_trophy"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <ImageButton
+        android:id="@+id/playMenuButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/game_icon"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/settings_icon"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"/>
+
+    <TextView
+        android:id="@+id/statsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_stats_title"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318"
+        />
+
+    <TextView
+        android:id="@+id/playText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_game_title"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.508"
+        />
+
+    <TextView
+        android:id="@+id/settingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_settings_title"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.708"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

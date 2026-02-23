@@ -1,10 +1,13 @@
 package com.mobileapp.fishmatch;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +28,8 @@ public class StatsFragment extends Fragment {
         View view = binding.getRoot();
 
         Stats stats = StatsController.load(requireContext());
+
+        int orientation = getResources().getConfiguration().orientation;
 
         // reset stats button callback
         binding.resetStatsButton.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +66,24 @@ public class StatsFragment extends Fragment {
 
         // update the text fields
         loadStats(stats);
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            binding.playMenuButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_statsFragment_to_startFragment);
+                }
+            });
+
+            binding.settingsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_statsFragment_to_settingsFragment);
+                }
+            });
+        }
 
         return view;
     }

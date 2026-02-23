@@ -1,5 +1,6 @@
 package com.mobileapp.fishmatch;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -44,6 +45,8 @@ public class StartFragment extends Fragment {
         binding = FragmentStartBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        int orientation = getResources().getConfiguration().orientation;
+
         // set the difficulty "easy" to be selected by default initially
         binding.easyDifficulty.setChecked(true);
 
@@ -68,6 +71,26 @@ public class StartFragment extends Fragment {
                 Navigation.findNavController(v).navigate(action);
             }
         });
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            binding.statsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_startFragment_to_statsFragment);
+                }
+            });
+
+            binding.settingsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate Back to Start
+                    Navigation.findNavController(v).navigate(R.id.action_startFragment_to_settingsFragment);
+                }
+            });
+        }
+
         return view;
 
     }

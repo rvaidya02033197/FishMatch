@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/startFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/play_background_color"
+    tools:context=".StartFragment">
+
+    <ImageView
+        android:id="@+id/fishMatchLogo"
+        android:layout_width="424dp"
+        android:layout_height="329dp"
+        android:background="@drawable/fish_match_logo_no_background"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/startScreenQuip"
+        android:layout_width="450dp"
+        android:layout_height="wrap_content"
+        android:text="If You Got a Nickel For Every Fish Matched...\n You Could be Very Rich One Day"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias=".96"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/play_button"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text="@string/menu_item_game_title"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.77" />
+
+    <RadioGroup
+        android:id="@+id/difficultyGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias=".67"
+        app:layout_constraintVertical_bias=".83">
+
+        <RadioButton
+            android:id="@+id/easyDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/easy_difficulty_option"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/mediumDifficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/medium_difficulty_option"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/hardDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hard_difficulty_option"
+            android:textColor="@color/black"/>
+
+    </RadioGroup>
+
+    <ImageButton
+        android:id="@+id/statsButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/stats_icon_trophy"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <ImageButton
+        android:id="@+id/playMenuButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/game_icon"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/settings_icon"
+        android:importantForAccessibility="no"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"/>
+
+    <TextView
+        android:id="@+id/statsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_stats_title"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318"
+        />
+
+    <TextView
+        android:id="@+id/playText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_game_title"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.508"
+        />
+
+    <TextView
+        android:id="@+id/settingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_settings_title"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.708"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
